@@ -18,6 +18,6 @@ public class Membership {
     private LocalDateTime endDate;
     @Column(name="membership_type")
     private MembershipType type;
-    @OneToOne plan;
+    @OneToOne
     private Plan plan;
 }
