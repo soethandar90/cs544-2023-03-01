@@ -11,13 +11,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "[AdventureWorksLT2019].[SalesLT].[Address]")
+@Table(name = "Sample")
 public class Address {
 	
 	@Id
 	@Column(name = "[AddressID]")
 	private Integer id;
-	
+
 	@Column(name = "[AddressLine1]")
 	private String address1;
 
