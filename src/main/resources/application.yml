@@ -2,9 +2,9 @@ spring:
   application:
     name: cs544-project-service
   datasource:
-    url: jdbc:sqlserver://cs544.cs.miu.edu:1433;databaseName=AdventureWorksLT2019;encrypt=true;trustServerCertificate=true;
-    username: adventure
-    password: AdventureWorks
+    url: jdbc:sqlserver://cs544.cs.miu.edu:1433;databaseName=CS544-202303-01;encrypt=true;trustServerCertificate=true;
+    username: CS544-202303-01
+    password: 2e0d170b-5a3a-4076-a006-2a7977bf8ce9
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     hikari:
       maximumPoolSize: 10
