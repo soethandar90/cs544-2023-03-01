@@ -10,10 +10,16 @@ import java.util.List;
 @Table(name="Badge")
 public class Badge {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="badgeId")
+    private int badgeId;
+
+    @Column(name="badgeCode")
     private String badgeCode;
+
+    @Column(name="status")
     private boolean status;
-    @OneToMany
+
+    @OneToMany(mappedBy = "badge")
     private List<Transaction> transaction;
 }

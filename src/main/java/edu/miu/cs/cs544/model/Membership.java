@@ -10,14 +10,16 @@ import java.time.LocalDateTime;
 @Table(name="membership")
 public class Membership {
     @Id
-    @GeneratedValue
-    private long id;
-    @Column(name="start_date")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="membershipId")
+    private long membershipId;
+    @Column(name="startDate")
     private LocalDateTime startDate;
-    @Column(name="end_date")
+    @Column(name="endDate")
     private LocalDateTime endDate;
-    @Column(name="membership_type")
+    @Column(name="membershipType")
     private MembershipType type;
+
     @OneToOne
     private Plan plan;
 }
