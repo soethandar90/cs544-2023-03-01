@@ -2,19 +2,18 @@ package edu.miu.cs.cs544.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name="Role")
 public class Role {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="roleId")
+    private int roleId;
 
- private String roleName;
+    @Column(name="roleName")
+    private String roleName;
 
 }

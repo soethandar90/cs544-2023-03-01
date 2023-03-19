@@ -16,27 +16,24 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name="locationId")
+    private int locationId;
 
     @Column(name="locationName")
     private String locationName;
+
     @Column(name="description")
     private String description;
 
-    @Column(name="locationType ")
+    @Column(name="locationType")
     private LocationType locationType;
+
+    @Column(name="capacity")
     private int capacity;
 
-    @OneToMany(mappedBy = "")
-    @Column(name = "transactions")
-    private List<Transaction> transactions;
-
-    @OneToMany(mappedBy = "")
-    @Column(name = "timeslots")
+    @OneToMany
+    @JoinTable(name="location_timeslot",
+            joinColumns = {@JoinColumn(name="locationId")},
+            inverseJoinColumns = {@JoinColumn(name="timeslotId")})
     private List<Timeslot> timeSlots;
-
-    @ManyToOne
-    @Column(name = "plan")
-    private Plan plan;
-
 }

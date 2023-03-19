@@ -7,21 +7,29 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="Plan")
+@Table(name="MembershipPlan")
 public class Plan {
     @Id
-    @GeneratedValue
-    private int id;
-    @JoinColumn(name="PlanName")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="planId")
+    private int planId;
+
+    @Column(name="PlanName")
     private String name;
-    @JoinColumn(name="PlanDescription")
-    private  String description;
+
+    @Column(name="planDescription")
+    private  String planDescription;
+
     @OneToMany
-    @JoinColumn(name="LocationId")
+    @JoinTable(name="plan_location",
+            joinColumns = {@JoinColumn(name="planId")},
+            inverseJoinColumns = {@JoinColumn(name="locationId")})
     private List<Location> locations;
 
     @OneToMany
-    @JoinColumn(name="RoleId")
+    @JoinTable(name="plan_role",
+            joinColumns = {@JoinColumn(name="planId")},
+            inverseJoinColumns = {@JoinColumn(name="roleId")})
     private List<Role> roles;
 
 

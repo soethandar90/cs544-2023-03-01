@@ -7,20 +7,29 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "Transaction")
+@Table(name = "BadgeTransaction")
 public class Transaction {
     @Id
-    @GeneratedValue
-    private int id;
-    private LocalDate timeStamp;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="transactionId")
+    private int transactionId;
+
+    @Column(name="transactionTime")
+    private LocalDate transactionTime;
+
+    @Column(name="transactionType")
     private String transactionType;
-    @Column(name = "Location")
-    private Location locaton;
-    @Column(name = "Plan")
+
+    @ManyToOne
+    @JoinColumn(name = "locationId")
+    private Location location;
+
+    @ManyToOne
+    @JoinColumn(name = "planId")
     private Plan plan;
-    @Column(name = "Transaction")
-    private Transaction transaction;
-    @Column(name = "Badge")
+
+    @ManyToOne
+    @JoinColumn(name = "badgeId")
     private Badge badge;
 
 }

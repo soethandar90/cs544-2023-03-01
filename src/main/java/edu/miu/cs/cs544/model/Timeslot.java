@@ -2,10 +2,7 @@ package edu.miu.cs.cs544.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Time;
 
 @Entity
@@ -13,12 +10,13 @@ import java.sql.Time;
 @Table(name="Timeslot")
 public class Timeslot {
     @Id
-    private int id;
-    @JoinColumn(name="StartTime")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="timeslotId")
+    private int timeslotId;
+    @Column(name="startTime")
     private Time startTime;
-    @JoinColumn(name="StartTime")
+    @Column(name="endTime")
     private Time endTime;
-    @JoinColumn(name="DayOfWeek")
-    private Day day;
-
+    @Column(name="dayOfWeek")
+    private Day dayOfWeek;
 }
