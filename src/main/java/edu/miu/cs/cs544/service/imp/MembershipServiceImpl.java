@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -31,8 +32,7 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Membership findAllMembershipsOfOneMemberByMemberId(int memberId) {
-       //return membershipRepository.findAllByMemberId(memberId);
-        return null;
+    public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(int memberId) {
+       return membershipRepository.findAllMembershipsOfOneMemberByMemberId(memberId);
     }
 }
