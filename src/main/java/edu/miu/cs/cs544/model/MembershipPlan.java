@@ -1,13 +1,20 @@
 package edu.miu.cs.cs544.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name="MembershipPlan")
+@Validated
+@NoArgsConstructor
+@AllArgsConstructor
 public class MembershipPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +22,11 @@ public class MembershipPlan {
     private int planId;
 
     @Column(name="PlanName")
+    @NotNull
     private String name;
 
     @Column(name="planDescription")
+    @NotNull
     private  String planDescription;
 
     @OneToMany
