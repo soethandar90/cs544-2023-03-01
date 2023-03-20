@@ -8,28 +8,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/location")
+@RequestMapping("/locations")
 public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    @GetMapping("/id/{id}")
-    public Location getLocationById(int id) {
-        return locationService.getLocationById(id);
+    @GetMapping("/{id}")
+    public Location findOneLocationById(@PathVariable int id) {
+        return locationService.findOneLocationByBadgeId(id);
     }
 
-    @GetMapping("/list")
-    public List<Location> getLocationList() {
-        return locationService.getAllLocations();
+    @GetMapping()
+    public List<Location> findLocationList() {
+        return locationService.findAllLocations();
     }
-    @PostMapping("/add")
-    public void addLocation(Location location) {
-        locationService.addLocation(location);
+    @PostMapping()
+    public void addOneLocation(Location location) {
+        locationService.addOneLocation(location);
     }
 
-    @PutMapping("/update")
-    public void updateLocation(Location location) {
-        locationService.updateLocation(location);
+    @PutMapping()
+    public void updateOneLocation(int locationId, Location location) {
+        locationService.updateOneLocation(locationId, location);
     }
+
+//    @GetMapping("/{id}")
+//    public List<Location> findAllLocationOfOnePlanByPlanId(int planId){
+//        return locationService.findAllLocationOfOnePlanByPlanId(planId);
+//
+//    }
 
 }
