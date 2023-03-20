@@ -14,7 +14,7 @@ public class BadgeController {
     @Autowired
     public BadgeService badgeService;
 
-    @PostMapping("/{id}")
+    @PutMapping ("/{id}")
     public void deactivateOneBadgeByBadgeId(@PathVariable int id) {
         badgeService.deactivateOneBadgeByBadgeId(id);
     }
@@ -24,8 +24,8 @@ public class BadgeController {
         badgeService.addOneBadge(badge);
     }
 
-    @GetMapping
-    public List<Badge> findAllBadgesOfOneMemberByMemberId() {
-        return badgeService.findAllBadgesOfOneMemberByMemberId();
+    @GetMapping("/{id}")
+    public List<Badge> findAllBadgesOfOneMemberByMemberId(@PathVariable int id) {
+        return badgeService.findAllBadgesOfOneMemberByMemberId(id);
     }
 }

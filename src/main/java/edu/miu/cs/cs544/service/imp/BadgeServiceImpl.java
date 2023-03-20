@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,7 +28,7 @@ public class BadgeServiceImpl implements BadgeService {
     }
 
     @Override
-    public List<Badge> findAllBadgesOfOneMemberByMemberId() {
-       return  badgeRepository.findAll();
+    public List<Badge> findAllBadgesOfOneMemberByMemberId(int id) {
+       return  badgeRepository.findAllById(Collections.singleton(id));
     }
 }
