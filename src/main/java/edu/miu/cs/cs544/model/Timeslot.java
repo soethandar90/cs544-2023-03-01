@@ -19,4 +19,8 @@ public class Timeslot {
     private Time endTime;
     @Column(name="dayOfWeek")
     private Day dayOfWeek;
+
+    @ManyToOne
+    @JoinColumn(name = "locationId")
+    private Location location;
 }
