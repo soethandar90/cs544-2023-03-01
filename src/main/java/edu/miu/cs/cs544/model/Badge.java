@@ -21,5 +21,5 @@ public class Badge {
     private boolean status;
 
     @OneToMany(mappedBy = "badge")
-    private List<Transaction> transaction;
+    private List<BadgeTransaction> transaction;
 }
