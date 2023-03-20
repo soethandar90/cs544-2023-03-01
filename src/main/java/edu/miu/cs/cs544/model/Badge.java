@@ -1,13 +1,20 @@
 package edu.miu.cs.cs544.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name="Badge")
+@Validated
+@NoArgsConstructor
+@AllArgsConstructor
 public class Badge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +22,11 @@ public class Badge {
     private int badgeId;
 
     @Column(name="badgeCode")
+    @NotNull
     private String badgeCode;
 
     @Column(name="status")
+    @NotNull
     private boolean status;
 
     @OneToMany(mappedBy = "badge")

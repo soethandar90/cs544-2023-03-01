@@ -1,14 +1,22 @@
 package edu.miu.cs.cs544.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name="Member")
+@Validated
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +24,15 @@ public class Member {
     private int memberId;
 
     @Column(name="firstName")
+    @NotNull
     private String firstName;
 
     @Column(name="lastname")
+    @NotNull
     private String lastName;
 
     @Column(name="email")
+    @Email
     private String email;
 
     @OneToMany

@@ -1,13 +1,23 @@
 package edu.miu.cs.cs544.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.util.List;
 
+
+//Please detete this class
+
+
 @Data
 @Entity
 @Table(name="MembershipPlan")
+@Validated
+@NoArgsConstructor
+@AllArgsConstructor
 public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
