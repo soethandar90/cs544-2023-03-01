@@ -6,14 +6,16 @@ import java.util.List;
 
 public interface LocationService {
 
-    public Location getLocationById(int id);
+    public Location findOneLocationByBadgeId(int id);
 
-    public List<Location> getAllLocations();
+    public List<Location> findAllLocations();
 
-    public void addLocation(Location location);
+    public void addOneLocation(Location location);
 
-    public void updateLocation(Location location);
+    public void updateOneLocation(int locationId, Location location);
 
+
+//    public List<Location> findAllLocationOfOnePlanByPlanId(int id);
 
 
 }
