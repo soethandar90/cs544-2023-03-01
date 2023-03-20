@@ -36,4 +36,7 @@ public class Location {
             joinColumns = {@JoinColumn(name="locationId")},
             inverseJoinColumns = {@JoinColumn(name="timeslotId")})
     private List<Timeslot> timeSlots;
+
+    @ManyToOne
+    private Plan plan;
 }
