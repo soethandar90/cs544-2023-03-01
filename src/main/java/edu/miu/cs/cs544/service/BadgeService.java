@@ -10,5 +10,5 @@ public interface BadgeService {
 
     void addOneBadge(Badge badge);
     void deactivateOneBadgeByBadgeId(int id);
-  List<Badge> findAllBadgesOfOneMemberByMemberId();
+  List<Badge> findAllBadgesOfOneMemberByMemberId(int id);
 }
