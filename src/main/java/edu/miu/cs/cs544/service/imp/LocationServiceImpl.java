@@ -44,8 +44,8 @@ public class LocationServiceImpl implements LocationService {
             existingLocation.setDescription(location.getDescription());
             existingLocation.setLocationType(location.getLocationType());
             existingLocation.setCapacity(location.getCapacity());
-            existingLocation.setTimeSlots(location.getTimeSlots());
-            existingLocation.setPlan(location.getPlan());
+            //existingLocation.setTimeSlots(location.getTimeSlots());
+            //existingLocation.setPlan(location.getPlan());
 
             // Save the updated location to the database
              locationRepository.save(existingLocation);

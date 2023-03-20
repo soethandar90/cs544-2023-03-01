@@ -31,12 +31,12 @@ public class Location {
     @Column(name="capacity")
     private int capacity;
 
-    @OneToMany
-    @JoinTable(name="location_timeslot",
-            joinColumns = {@JoinColumn(name="locationId")},
-            inverseJoinColumns = {@JoinColumn(name="timeslotId")})
-    private List<Timeslot> timeSlots;
+//    @OneToMany
+//    @JoinTable(name="location_timeslot",
+//            joinColumns = {@JoinColumn(name="locationId")},
+//            inverseJoinColumns = {@JoinColumn(name="timeslotId")})
+//    private List<Timeslot> timeSlots;
 
-    @ManyToOne
-    private Plan plan;
+//    @ManyToOne()
+//    private Plan plan;
 }
