@@ -1,15 +1,23 @@
 package edu.miu.cs.cs544.service.imp;
 
+import edu.miu.cs.cs544.dto.RoleDto;
 import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.repository.RoleRepository;
 import edu.miu.cs.cs544.service.RoleService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class RoleServiceImp implements RoleService {
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public Role addOneRole(Role role) {
         //check role exist or not
@@ -31,5 +39,11 @@ public class RoleServiceImp implements RoleService {
     public String deleteOneRoleByRoleId(Integer id) {
         roleRepository.deleteById(id);
         return "200";
+    }
+
+    public RoleDto getOneRoleByRoleId(Integer roleId){
+        Role role = roleRepository.findById(roleId).get();
+        RoleDto roleDto = this.modelMapper.map(role, RoleDto.class);
+        return roleDto;
     }
 }

@@ -1,9 +1,12 @@
 package edu.miu.cs.cs544.controller;
 
 
+import edu.miu.cs.cs544.dto.RoleDto;
 import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,5 +30,11 @@ public class RoleController {
     @DeleteMapping("/{id}")
     public String deleteOneRoleByRoleId(@PathVariable Integer id){
         return roleService.deleteOneRoleByRoleId(id);
+    }
+
+    @GetMapping("/roleId")
+    public ResponseEntity<RoleDto> getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
+        RoleDto roleDto = this.roleService.getOneRoleByRoleId(roleId);
+        return new ResponseEntity<RoleDto>(roleDto, HttpStatus.OK);
     }
 }
