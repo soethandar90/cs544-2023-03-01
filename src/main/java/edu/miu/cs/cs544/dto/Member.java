@@ -11,7 +11,7 @@ public class Member {
     private String firstName;
     private String lastName;
     private String email;
-    private List<Role> role=new ArrayList<>();
+    private List<RoleDto> role=new ArrayList<>();
     private List<Badge> badge;
     private List<Membership> membership;
 }

@@ -11,7 +11,7 @@ public class MembershipPlan {
 
     private List<Location> locations;
 
-    private List<Role> roles;
+    private List<RoleDto> roles;
 
 
 
