@@ -12,4 +12,7 @@ import java.util.Optional;
 public interface MembershipRepository extends JpaRepository<Membership, Integer> {
     @Query(value="SELECT * FROM memberships WHERE memberId=:memberId", nativeQuery = true)
     public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(@Param("memberId") int memberId);
+
+    @Query(value="SELECT * FROM memberships WHERE membershipId=:membershipId", nativeQuery = true)
+    public Membership findOneMembershipsOfOneMemberByMembershipId(@Param("membershipId") int membershipId);
 }

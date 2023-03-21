@@ -7,33 +7,11 @@ import java.util.List;
 
 public interface BadgeTransactionService {
 
-    public void addOneTransaction(BadgeTransaction badgeTransaction);
+    // find all badge Transaction of  one memner by member id
 
-    //fileter active badge of one member by member id
-    public Badge filterActiveBadgeByMemberId(int memberId);
-
-   // find all badge Transaction of  one memner by member id
-
+    public boolean generateBadgeTransaction(BadgeTransaction badgeTransaction);
 
     List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId);
 
-    void generateBadgeTransaction(int badgeId);
-
-
+    public Badge filterActiveBadgeByMemberId(int memberId);
 }
-
-//
-//    @Override
-//    public Badge filterActiveBadgeByMemberId(int memberId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void generateBadgeTransaction(int badgeId) {
-//
-//    }
