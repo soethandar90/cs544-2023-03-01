@@ -32,3 +32,5 @@ public class Badge {
     @OneToMany(mappedBy = "badge")
     private List<BadgeTransaction> transaction;
 }
+
+

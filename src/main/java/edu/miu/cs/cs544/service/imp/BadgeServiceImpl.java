@@ -17,6 +17,8 @@ import java.util.List;
 public class BadgeServiceImpl implements BadgeService {
     @Autowired
     public BadgeRepository badgeRepository;
+
+
     @Override
     public void addOneBadge(Badge badge) {
         badgeRepository.save(badge);
@@ -32,4 +34,23 @@ public class BadgeServiceImpl implements BadgeService {
     public List<Badge> findAllBadgesOfOneMemberByMemberId(int id) {
        return  badgeRepository.findAllById(Collections.singleton(id));
     }
+
+    @Override
+    public boolean isBadgeActive(int badgeId) {
+        return false;
+    }
+
+
+//    @Override
+//    public boolean isBadgeActive(int badgeId) {
+//
+//        Badge badge = badgeRepository.findById(badgeId).orElse(null);
+//        if(badge==null)
+//        {
+//            return false;
+//        }
+//        else
+//        return badge.isStatus();
+//    }
+
 }
