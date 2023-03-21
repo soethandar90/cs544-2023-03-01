@@ -39,8 +39,9 @@ public class Member {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name="member_role",
-    joinColumns = {@JoinColumn(name="memberId")},
-    inverseJoinColumns = {@JoinColumn(name="roleId")})
+    joinColumns = {@JoinColumn(name="memberId", referencedColumnName = "memberId")},
+    inverseJoinColumns = {@JoinColumn(name="roleId", referencedColumnName = "roleId")}
+    )
     private List<Role> role=new ArrayList<>();
 
     @OneToMany
