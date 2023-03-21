@@ -3,18 +3,18 @@ package edu.miu.cs.cs544.controller;
 import edu.miu.cs.cs544.model.LoginRequest;
 import edu.miu.cs.cs544.model.LoginResponse;
 import edu.miu.cs.cs544.model.RefreshTokenRequest;
-import edu.miu.cs.cs544.service.UaaService;
+import edu.miu.cs.cs544.service.LoginService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.var;
 @RestController
-@RequestMapping("/uaa")
+@RequestMapping("/login")
 @CrossOrigin
-public class UaaController {
+public class LoginController {
 
-    private final UaaService uaaService;
+    private final LoginService uaaService;
 
-    public UaaController(UaaService uaaService) {
+    public LoginController(LoginService uaaService) {
         this.uaaService = uaaService;
     }
 

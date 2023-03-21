@@ -4,7 +4,7 @@ import edu.miu.cs.cs544.model.LoginRequest;
 import edu.miu.cs.cs544.model.LoginResponse;
 import edu.miu.cs.cs544.model.RefreshTokenRequest;
 import edu.miu.cs.cs544.security.JwtHelper;
-import edu.miu.cs.cs544.service.UaaService;
+import edu.miu.cs.cs544.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UaaServiceImpl implements UaaService {
+public class LoginServiceImpl implements LoginService {
 
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
