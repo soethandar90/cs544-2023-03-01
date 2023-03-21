@@ -18,17 +18,17 @@ public class LocationController {
         return locationService.findOneLocationByBadgeId(id);
     }
 
-    @GetMapping()
+    @GetMapping
     public List<Location> findLocationList() {
         return locationService.findAllLocations();
     }
-    @PostMapping()
-    public void addOneLocation(Location location) {
+    @PostMapping
+    public void addOneLocation(@RequestBody Location location) {
         locationService.addOneLocation(location);
     }
 
-    @PutMapping()
-    public void updateOneLocation(int locationId, Location location) {
+    @PutMapping
+    public void updateOneLocation(@PathVariable int locationId, @RequestBody Location location) {
         locationService.updateOneLocation(locationId, location);
     }
 
