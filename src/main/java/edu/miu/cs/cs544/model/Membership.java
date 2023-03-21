@@ -31,6 +31,10 @@ public class Membership {
     @Enumerated(EnumType.STRING)
     private MembershipType type;
 
+    @Column(name="currentUsage")
+    @NotNull
+    private int currentUsage;
+
     @OneToOne
     private Plan plan;
 }
