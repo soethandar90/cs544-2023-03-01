@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -23,11 +24,14 @@ public class BadgeTransaction {
 
     @Column(name="transactionTime")
     @NotNull
-    private LocalDate transactionTime;
+    private LocalDateTime transactionTime;
 
     @Column(name="transactionType")
     @NotNull
-    private String transactionType;
+    private BadgeTransactionType transactionType;
+
+    @Column(name="reason")
+    private String reason;
 
     @ManyToOne
     @JoinColumn(name = "locationId")

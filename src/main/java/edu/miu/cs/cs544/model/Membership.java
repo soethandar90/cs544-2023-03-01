@@ -30,6 +30,10 @@ public class Membership {
     @NotNull
     private MembershipType type;
 
+    @Column(name="currentUsage")
+    @NotNull
+    private int currentUsage;
+
     @OneToOne
     private Plan plan;
 }
