@@ -27,9 +27,9 @@ public class LocationController {
         locationService.addOneLocation(location);
     }
 
-    @PutMapping
-    public void updateOneLocation(@PathVariable int locationId, @RequestBody Location location) {
-        locationService.updateOneLocation(locationId, location);
+    @PutMapping("/{id}")
+    public void updateOneLocation(@PathVariable int id, @RequestBody Location location) {
+        locationService.updateOneLocation(id, location);
     }
 
 //    @GetMapping("/{id}")

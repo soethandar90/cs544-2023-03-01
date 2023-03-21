@@ -26,7 +26,7 @@ public class MembershipPlanRole {
     @Column(name="usageLimit")
     private int usageLimit;
 
-    @Column(name="usageFrequency")
+    @Column(name="usageFrequency",columnDefinition = "varchar(20)")
     private UsageFrequencyType usageFrequency;
 
 }

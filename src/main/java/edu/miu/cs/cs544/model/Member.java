@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,5 +51,6 @@ public class Member {
 
     @OneToMany
     @JoinColumn(name="memberId")
+    @JsonIgnore
     private List<Membership> membership;
 }

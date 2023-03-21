@@ -32,7 +32,7 @@ public class Location {
     @NotNull
     private String description;
 
-    @Column(name="locationType")
+    @Column(name="locationType",columnDefinition = "varchar(20)")
     @NotNull
     private LocationType locationType;
 
