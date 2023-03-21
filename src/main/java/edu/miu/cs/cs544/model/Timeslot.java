@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -34,4 +35,6 @@ public class Timeslot {
     @ManyToOne
     @JoinColumn(name = "locationId")
     private Location location;
+
+
 }

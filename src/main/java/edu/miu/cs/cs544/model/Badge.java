@@ -31,7 +31,12 @@ public class Badge {
     private BadgeStatusType status;
 
     @OneToMany(mappedBy = "badge")
+
     private List<BadgeTransaction> transaction;
+
+    @ManyToOne
+    @JoinColumn(name="memberId")
+    private Member member;
 }
 
 
