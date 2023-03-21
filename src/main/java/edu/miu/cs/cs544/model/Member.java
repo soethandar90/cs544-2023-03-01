@@ -34,8 +34,10 @@ public class Member {
     @Column(name="email")
     @Email
     private String email;
+    @Column(name="password")
+    private String password;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name="member_role",
     joinColumns = {@JoinColumn(name="memberId")},
     inverseJoinColumns = {@JoinColumn(name="roleId")})
