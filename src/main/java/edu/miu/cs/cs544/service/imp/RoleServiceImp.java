@@ -1,6 +1,7 @@
 package edu.miu.cs.cs544.service.imp;
 
 import edu.miu.cs.cs544.dto.RoleDto;
+import edu.miu.cs.cs544.exception.ResourceNotFoundException;
 import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.repository.RoleRepository;
 import edu.miu.cs.cs544.service.RoleService;
@@ -40,7 +41,8 @@ public class RoleServiceImp implements RoleService {
     }
 
     public RoleDto getOneRoleByRoleId(Integer roleId){
-        Role role = roleRepository.findById(roleId).get();
+        //Role role = roleRepository.findById(roleId).get();
+        Role role = roleRepository.findById(roleId).orElseThrow(() -> new ResourceNotFoundException("Role", "roleId", roleId));
         RoleDto roleDto = this.modelMapper.map(role, RoleDto.class);
         return roleDto;
     }
