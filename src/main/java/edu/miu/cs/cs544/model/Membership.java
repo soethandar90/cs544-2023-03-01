@@ -28,6 +28,7 @@ public class Membership {
     private LocalDateTime endDate;
     @Column(name="membershipType")
     @NotNull
+    @Enumerated(EnumType.STRING)
     private MembershipType type;
 
     @OneToOne

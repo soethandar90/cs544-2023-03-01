@@ -28,6 +28,7 @@ public class Timeslot {
     private Time endTime;
     @Column(name="dayOfWeek")
     @NotNull
+    @Enumerated(EnumType.STRING)
     private Day dayOfWeek;
 
     @ManyToOne

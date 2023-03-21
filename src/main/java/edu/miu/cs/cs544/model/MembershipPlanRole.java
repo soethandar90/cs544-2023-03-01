@@ -27,6 +27,7 @@ public class MembershipPlanRole {
     private int usageLimit;
 
     @Column(name="usageFrequency",columnDefinition = "varchar(20)")
+    @Enumerated(EnumType.STRING)
     private UsageFrequencyType usageFrequency;
 
 }

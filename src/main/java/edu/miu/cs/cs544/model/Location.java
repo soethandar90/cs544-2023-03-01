@@ -34,6 +34,7 @@ public class Location {
 
     @Column(name="locationType",columnDefinition = "varchar(20)")
     @NotNull
+    @Enumerated(EnumType.STRING)
     private LocationType locationType;
 
     @Column(name="capacity")

@@ -32,7 +32,7 @@ public class BadgeServiceImpl implements BadgeService {
 
     @Override
     public List<Badge> findAllBadgesOfOneMemberByMemberId(int id) {
-       return  badgeRepository.findAllById(Collections.singleton(id));
+       return  badgeRepository.findAllByMemberId(id).get();
     }
 
     @Override

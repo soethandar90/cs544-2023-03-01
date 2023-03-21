@@ -27,6 +27,7 @@ public class Badge {
 
     @Column(name="status")
     @NotNull
+    @Enumerated(EnumType.STRING)
     private BadgeStatusType status;
 
     @OneToMany(mappedBy = "badge")
