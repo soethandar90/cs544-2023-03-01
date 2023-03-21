@@ -1,0 +1,32 @@
+package edu.miu.cs.cs544.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name="MembershipPlanRole")
+@NoArgsConstructor
+@AllArgsConstructor
+public class MembershipPlanRole {
+    @EmbeddedId
+    private MembershipPlanRoleId membershipPlanRoleId;
+
+    @ManyToOne
+    @MapsId("planId")
+    private MembershipPlan membershipPlan;
+
+    @ManyToOne
+    @MapsId("roleId")
+    private Role role;
+
+    @Column(name="usageLimit")
+    private int usageLimit;
+
+    @Column(name="usageFrequency")
+    private UsageFrequencyType usageFrequency;
+
+}

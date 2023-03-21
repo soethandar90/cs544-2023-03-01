@@ -1,6 +1,7 @@
 package edu.miu.cs.cs544.service.imp;
 
 import edu.miu.cs.cs544.model.Badge;
+import edu.miu.cs.cs544.model.BadgeStatusType;
 import edu.miu.cs.cs544.repository.BadgeRepository;
 import edu.miu.cs.cs544.service.BadgeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class BadgeServiceImpl implements BadgeService {
     @Override
     public void deactivateOneBadgeByBadgeId(int id) {
         Badge badge=badgeRepository.findById(id).get();
-        badge.setStatus(false);
+        badge.setStatus(BadgeStatusType.INACTIVE);
     }
 
     @Override
