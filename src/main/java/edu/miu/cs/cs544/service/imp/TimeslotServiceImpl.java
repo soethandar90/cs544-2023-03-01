@@ -6,6 +6,8 @@ import edu.miu.cs.cs544.service.TimeslotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TimeslotServiceImpl implements TimeslotService {
     @Autowired
@@ -28,4 +30,10 @@ public class TimeslotServiceImpl implements TimeslotService {
         timeslotRepository.deleteById(id);
         return "200";
     }
+
+    @Override
+    public List<Timeslot> findAll() {
+       return timeslotRepository.findAll();
+    }
+
 }

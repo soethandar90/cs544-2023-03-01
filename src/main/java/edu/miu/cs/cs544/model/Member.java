@@ -45,8 +45,7 @@ public class Member {
     )
     private List<Role> role=new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name="memberId")
+    @OneToMany(mappedBy = "member")
     private List<Badge> badge;
 
     @OneToMany
