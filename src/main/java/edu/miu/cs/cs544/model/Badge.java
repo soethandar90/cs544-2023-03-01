@@ -27,7 +27,7 @@ public class Badge {
 
     @Column(name="status")
     @NotNull
-    private boolean status;
+    private BadgeStatusType status;
 
     @OneToMany(mappedBy = "badge")
     private List<BadgeTransaction> transaction;
