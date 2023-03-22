@@ -87,16 +87,23 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
     }
 
     private boolean usageCountSameDaySlot(BadgeTransaction badgeTransaction) {
-        Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(badgeTransaction.getTransactionTime().getDayOfWeek().toString(), badgeTransaction.getLocation().getLocationId()).get();
-        String start = LocalDate.now() + " " + timeslot.getStartTime();
-        String end = LocalDate.now() + " " + timeslot.getEndTime();
-        int count = badgeTransactionRepository.findCountByDate(badgeTransaction.getBadge().getBadgeId(),badgeTransaction.getLocation().getLocationId()
-        ,badgeTransaction.getPlan().getPlanId(),start,end);
 
-        if(count>0) {
-            return true;
-        } else {
+        //if exampted unlimited
+        int exampted = membershipRepository.searchIfUnlimitedMembership(badgeTransaction.getBadge().getMember().getMemberId(),badgeTransaction.getPlan().getPlanId());
+        if(exampted>0){
             return false;
+        }  else {
+            Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(badgeTransaction.getTransactionTime().getDayOfWeek().toString(), badgeTransaction.getLocation().getLocationId()).get();
+            String start = LocalDate.now() + " " + timeslot.getStartTime();
+            String end = LocalDate.now() + " " + timeslot.getEndTime();
+            int count = badgeTransactionRepository.findCountByDate(badgeTransaction.getBadge().getBadgeId(), badgeTransaction.getLocation().getLocationId()
+                    , badgeTransaction.getPlan().getPlanId(), start, end);
+
+            if (count > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
