@@ -28,6 +28,7 @@ public class BadgeTransaction {
 
     @Column(name="transactionType")
     @NotNull
+    @Enumerated(EnumType.STRING)
     private BadgeTransactionType transactionType;
 
     @Column(name="reason")

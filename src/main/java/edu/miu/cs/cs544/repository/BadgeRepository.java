@@ -17,6 +17,6 @@ public interface BadgeRepository extends JpaRepository<Badge,Integer> {
 
     @Query(value="SELECT * FROM badge WHERE badgeCode=:badge", nativeQuery = true)
     Optional<Badge> findByBadge(@Param("badge") String badge);
-
-    Badge findCurrentBadgeById(int id);
+//
+//    Badge findCurrentBadgeById(int id);
 }

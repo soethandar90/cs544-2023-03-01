@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BadgeTransactionImpl implements BadgeTransactionService {
@@ -42,8 +42,8 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
     }
 
     @Override
-    public List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId) {
-        return badgeTransactionRepository.findAllById(Collections.singleton(memberId));
+    public Optional<List<BadgeTransaction>> findAllBadgeTransactionByMemberId(int memberId) {
+        return badgeTransactionRepository.findAllTransactionOfOneMemberByMemberId(memberId);
     }
 
     @Override

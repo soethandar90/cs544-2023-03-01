@@ -52,10 +52,10 @@ public class LocationServiceImpl implements LocationService {
         System.out.println("Location updated");
     }
 
-//    @Override
-//    public List<Location> findAllLocationOfOnePlanByPlanId(int id) {
-//       return locationRepository.findLocationsOfOnePlanByPlanId(id);
-//    }
+    @Override
+    public List<Location> findAllLocationOfOnePlanByPlanId(int id) {
+       return locationRepository.findLocationsOfOnePlanByPlanId(id);
+    }
 
 
     }

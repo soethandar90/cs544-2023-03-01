@@ -3,8 +3,10 @@ package edu.miu.cs.cs544.service;
 import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.model.BadgeTransaction;
+import edu.miu.cs.cs544.model.Location;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BadgeTransactionService {
 
@@ -12,9 +14,12 @@ public interface BadgeTransactionService {
 
     public boolean generateBadgeTransaction(BadgeTransaction badgeTransaction);
 
-    List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId);
+    Optional<List<BadgeTransaction>> findAllBadgeTransactionByMemberId(int memberId);
 
     public Badge filterActiveBadgeByMemberId(int memberId);
 
     public boolean generateBadgeTransaction(BadgeTransactionRequestDTO badgeTransaction);
+
+    public boolean isBadgeActive(Badge badge);
+
 }

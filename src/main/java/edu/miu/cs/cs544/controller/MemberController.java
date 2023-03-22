@@ -62,7 +62,7 @@ public class MemberController {
         return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(memberId);
     }
     @GetMapping("/{memberId}/transactions")
-    public List<BadgeTransaction> findAllTransactionsOfOneMemberByMemberId(@PathVariable int memberId) {
+    public Optional<List<BadgeTransaction>> findAllTransactionsOfOneMemberByMemberId(@PathVariable int memberId) {
         return badgeTransactionService.findAllBadgeTransactionByMemberId(memberId);
     }
 
