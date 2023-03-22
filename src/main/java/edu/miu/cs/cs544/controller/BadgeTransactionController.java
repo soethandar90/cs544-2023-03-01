@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/transactions")
@@ -25,8 +24,8 @@ public class BadgeTransactionController {
         return badgeTransactionService.filterActiveBadgeByMemberId(memberId);
     }
 
-    @GetMapping("/{memberId}/transactions")
-    public Optional<List<BadgeTransaction>> findAllBadgeTransactionByMemberId(@PathVariable int memberId) {
+    @GetMapping("/{memberId}")
+    public List<BadgeTransaction> findAllBadgeTransactionByMemberId(@PathVariable int memberId) {
         return badgeTransactionService.findAllBadgeTransactionByMemberId(memberId);
     }
 
