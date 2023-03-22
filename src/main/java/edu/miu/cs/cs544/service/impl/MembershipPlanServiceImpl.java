@@ -37,6 +37,11 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
     }
 
     @Override
+    public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id) {
+        return null;
+    }
+
+    //@Override
     public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId() {
         return membershipPlanRepository.findAll();
     }
