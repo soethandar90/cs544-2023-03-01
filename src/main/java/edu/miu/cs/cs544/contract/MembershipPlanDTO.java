@@ -1,17 +1,17 @@
-package edu.miu.cs.cs544.dto;
+package edu.miu.cs.cs544.contract;
 
 import lombok.Data;
 import java.util.List;
 
 @Data
-public class MembershipPlan {
+public class MembershipPlanDTO {
     private int planId;
     private String name;
     private  String planDescription;
 
-    private List<Location> locations;
+    private List<LocationDTO> locations;
 
-    private List<RoleDto> roles;
+    private List<RoleDTO> roles;
 
 
 

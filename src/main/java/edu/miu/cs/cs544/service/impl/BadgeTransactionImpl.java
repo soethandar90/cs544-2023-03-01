@@ -1,7 +1,8 @@
-package edu.miu.cs.cs544.service.imp;
+package edu.miu.cs.cs544.service.impl;
 
+import edu.miu.cs.cs544.common.BadgeStatusType;
+import edu.miu.cs.cs544.common.BadgeTransactionType;
 import edu.miu.cs.cs544.exception.InvalidTransactionException;
-import edu.miu.cs.cs544.exception.ResourceNotFoundException;
 import edu.miu.cs.cs544.model.*;
 import edu.miu.cs.cs544.repository.*;
 import edu.miu.cs.cs544.service.BadgeTransactionService;
@@ -9,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.Time;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
@@ -48,7 +46,7 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
 
         if (!isBadgeActive(badgeTransaction.getBadge().getBadgeId())) {
             declineTransaction(badgeTransaction, "Badge Inactive");
-            throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Badge Inactive");
+            throw new InvalidTransactionException("transactionId","transactionTime", BadgeTransactionType.DECLINED.toString(),"Badge Inactive");
         }
 
         if (!isTimeslotActive(badgeTransaction.getTransactionTime(), badgeTransaction.getLocation().getLocationId())) {

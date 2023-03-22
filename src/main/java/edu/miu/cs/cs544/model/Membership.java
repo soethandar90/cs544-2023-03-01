@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.model;
 
+import edu.miu.cs.cs544.common.MembershipType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
