@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.service;
 
+import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.model.BadgeTransaction;
 
@@ -14,4 +15,6 @@ public interface BadgeTransactionService {
     List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId);
 
     public Badge filterActiveBadgeByMemberId(int memberId);
+
+    public boolean generateBadgeTransaction(BadgeTransactionRequestDTO badgeTransaction);
 }

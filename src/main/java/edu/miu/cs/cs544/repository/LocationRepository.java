@@ -10,9 +10,8 @@ import java.util.List;
 
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Integer> {
-
-
-
+    @Query( value = "SELECT * FROM Location  WHERE planId = :planId",nativeQuery = true)
+    List<Location> findLocationByPlan(Integer planId);
 
 
 //    @Query( "SELECT l FROM Location l WHERE l.plan.planId = :planId")

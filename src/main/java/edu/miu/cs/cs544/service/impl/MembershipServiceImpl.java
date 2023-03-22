@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,7 +34,7 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(int memberId) {
+    public Optional<List<Membership>> findAllMembershipsOfOneMemberByMemberId(int memberId) {
        return membershipRepository.findAllMembershipsOfOneMemberByMemberId(memberId);
     }
 }

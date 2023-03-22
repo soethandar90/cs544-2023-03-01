@@ -40,6 +40,10 @@ public class MembershipPlanController {
         membershipPlanService.deleteOnePlan(id);
     }
 
+    @GetMapping("/{planid}/locations")
+    public List<Location> findLocationByPlan(@PathVariable Integer planid) {
+        return membershipPlanService.findLocationByPlan(planid);
+    }
 
 //
 //
