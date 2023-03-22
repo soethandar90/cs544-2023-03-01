@@ -10,6 +10,7 @@ import edu.miu.cs.cs544.service.BadgeTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
@@ -61,7 +62,7 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
         badgeTransaction.setPlan(membershipPlan);
         badgeTransaction.setLocation(location);
         badgeTransaction.setTransactionTime(LocalDateTime.now());
-        badgeTransactionRepository.save(badgeTransaction);
+        ///badgeTransactionRepository.save(badgeTransaction);
 
         if (!isBadgeActive(badge)) {
             declineTransaction(badgeTransaction, "Badge Inactive");
@@ -76,9 +77,27 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
             declineTransaction(badgeTransaction, "Insufficient usage balance");
             throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Insufficient usage balance");
         }
+        if (usageCountSameDaySlot(badgeTransaction)){
+            declineTransaction(badgeTransaction, "Already Swiped Once");
+            throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Already Swiped Once");
+        }
 
         approveTransaction(badgeTransaction);
         return false;
+    }
+
+    private boolean usageCountSameDaySlot(BadgeTransaction badgeTransaction) {
+        Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(badgeTransaction.getTransactionTime().getDayOfWeek().toString(), badgeTransaction.getLocation().getLocationId()).get();
+        String start = LocalDate.now() + " " + timeslot.getStartTime();
+        String end = LocalDate.now() + " " + timeslot.getEndTime();
+        int count = badgeTransactionRepository.findCountByDate(badgeTransaction.getBadge().getBadgeId(),badgeTransaction.getLocation().getLocationId()
+        ,badgeTransaction.getPlan().getPlanId(),start,end);
+
+        if(count>0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private boolean isBadgeActive(Badge badge) {
