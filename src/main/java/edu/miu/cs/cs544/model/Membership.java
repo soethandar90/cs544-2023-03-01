@@ -20,7 +20,7 @@ public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="membershipId")
-    private long membershipId;
+    private int membershipId;
     @Column(name="startDate")
     @NotNull
     private LocalDateTime startDate;
@@ -37,5 +37,5 @@ public class Membership {
     private int currentUsage;
 
     @OneToOne
-    private Plan plan;
+    private MembershipPlan plan;
 }
