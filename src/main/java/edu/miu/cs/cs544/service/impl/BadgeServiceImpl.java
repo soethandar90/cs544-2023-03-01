@@ -34,22 +34,4 @@ public class BadgeServiceImpl implements BadgeService {
        return  badgeRepository.findAllByMemberId(id).get();
     }
 
-    @Override
-    public boolean isBadgeActive(int badgeId) {
-        return false;
-    }
-
-
-//    @Override
-//    public boolean isBadgeActive(int badgeId) {
-//
-//        Badge badge = badgeRepository.findById(badgeId).orElse(null);
-//        if(badge==null)
-//        {
-//            return false;
-//        }
-//        else
-//        return badge.isStatus();
-//    }
-
 }

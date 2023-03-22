@@ -81,7 +81,7 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
         return false;
     }
 
-    private boolean isBadgeActive(Badge badge) {
+    public boolean isBadgeActive(Badge badge) {
 
         if (badge.getStatus().equals(BadgeStatusType.ACTIVE)) {
             return true;
@@ -89,11 +89,11 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
         return false;
     }
 
-    private int usageCount(int membershipPlanId,int memberId) {
+    public int usageCount(int membershipPlanId,int memberId) {
         return membershipRepository.findOneMembershipsOfOneMemberByMembershipId2(membershipPlanId,memberId).getCurrentUsage();
     }
 
-    private boolean isTimeslotActive(LocalDateTime tranTime, int locationId) {
+    public boolean isTimeslotActive(LocalDateTime tranTime, int locationId) {
         Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(tranTime.getDayOfWeek().toString(), locationId).get();
         if (timeslot != null) {
             LocalTime transactionTime = tranTime.toLocalTime();
