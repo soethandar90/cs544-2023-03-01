@@ -1,13 +1,13 @@
 package edu.miu.cs.cs544.service.impl;
 
-import edu.miu.cs.cs544.model.LoginRequest;
-import edu.miu.cs.cs544.model.LoginResponse;
-import edu.miu.cs.cs544.model.RefreshTokenRequest;
+import edu.miu.cs.cs544.model.*;
+import edu.miu.cs.cs544.repository.MemberRepository;
 import edu.miu.cs.cs544.security.JwtHelper;
 import edu.miu.cs.cs544.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,9 +22,11 @@ public class LoginServiceImpl implements LoginService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtHelper jwtHelper;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Override
-    public LoginResponse login(LoginRequest loginRequest) {
+    public LoginResponseMember login(LoginRequest loginRequest) {
         try {
             var result = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
@@ -36,7 +38,8 @@ public class LoginServiceImpl implements LoginService {
 
         final String accessToken = jwtHelper.generateToken(loginRequest.getEmail());
         final String refreshToken = jwtHelper.generateRefreshToken(loginRequest.getEmail());
-        var loginResponse = new LoginResponse(accessToken, refreshToken);
+        Member member = memberRepository.findByEmail(loginRequest.getEmail());
+        var loginResponse = new LoginResponseMember(accessToken, refreshToken,member.getMemberId());
         return loginResponse;
     }
 
