@@ -7,5 +7,5 @@ public interface RoleService {
     public Role addOneRole(Role role);
     public Role updateOneRoleByRoleId(Integer id, String name);
     public String deleteOneRoleByRoleId(Integer id);
-    public RoleDTO getOneRoleByRoleId(Integer roleId);
+    public Role getOneRoleByRoleId(Integer roleId);
 }

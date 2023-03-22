@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class RoleController {
     @Autowired
     RoleService roleService;
-
+    @GetMapping("/{roleId}")
+    public Role getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
+        Role roleDto = roleService.getOneRoleByRoleId(roleId);
+        return roleDto;
+    }
     @PostMapping("/")
     public Role addOneRole(@RequestBody Role role) {
         roleService.addOneRole(role);
@@ -32,9 +36,5 @@ public class RoleController {
         return roleService.deleteOneRoleByRoleId(id);
     }
 
-    @GetMapping("/roleId")
-    public ResponseEntity<RoleDTO> getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
-        RoleDTO roleDto = this.roleService.getOneRoleByRoleId(roleId);
-        return new ResponseEntity<RoleDTO>(roleDto, HttpStatus.OK);
-    }
+
 }
