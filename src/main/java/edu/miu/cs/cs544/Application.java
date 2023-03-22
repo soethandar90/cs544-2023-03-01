@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class Application {//implements CommandLineRunner {
+public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -16,13 +16,5 @@ public class Application {//implements CommandLineRunner {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-
-//    Location location = new Location("R0", "Place u eat food", LocationType.DINING_HALL, 50);
-//    Timeslot timeslot = new Timeslot(LocalTime.of(2, 3, 5), LocalTime.of(1, 3, 5), Day.FRIDAY, location);
-//    Plan plan=new Plan("MealPlan","This is meal Plan",);
-
-//    Location location = new Location(1,"R0", "Place u eat food", LocationType.DINING_HALL, 50);
-//    Timeslot timeslot = new Timeslot(1,LocalTime.of(12,30,30), LocalTime.of(8, 3, 5), Day.MONDAY, 1);
-//    Timeslot timeslot1 = new Timeslot(2,Time.of(2, 3, 5), Time.of(1, 3, 5), Day.FRIDAY, 1);
 
 }

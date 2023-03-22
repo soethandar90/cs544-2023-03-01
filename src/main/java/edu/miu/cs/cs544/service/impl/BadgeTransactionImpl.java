@@ -31,8 +31,6 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
 
     @Override
     public List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId) {
-        Badge badge = badgeRepository.findById(memberId).get();
-
         return badgeTransactionRepository.findAllById(Collections.singleton(memberId));
     }
 

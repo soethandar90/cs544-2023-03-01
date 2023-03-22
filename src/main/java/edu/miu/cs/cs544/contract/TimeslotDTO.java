@@ -7,7 +7,6 @@ import java.sql.Time;
 
 @Data
 public class TimeslotDTO {
-    private int timeslotId;
     private Time startTime;
     private Time endTime;
     private Day dayOfWeek;

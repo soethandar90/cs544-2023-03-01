@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 public class MemberDTO {
-    private int memberId;
     private String firstName;
     private String lastName;
     private String email;
