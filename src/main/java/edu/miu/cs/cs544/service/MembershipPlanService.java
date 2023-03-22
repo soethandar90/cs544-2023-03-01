@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.service;
 
+import edu.miu.cs.cs544.model.Location;
 import edu.miu.cs.cs544.model.MembershipPlan;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface MembershipPlanService {
 
 public Optional<MembershipPlan> getMembershipPlanById(int id);
 
+    List<Location> findLocationByPlan(Integer planid);
 }

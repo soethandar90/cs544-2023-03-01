@@ -1,11 +1,13 @@
 package edu.miu.cs.cs544.controller;
 
+import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
 import edu.miu.cs.cs544.exception.ResourceNotFoundException;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.model.BadgeTransaction;
 import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.service.BadgeTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class BadgeTransactionController {
 
     @Autowired
+    @Qualifier("BadgeTransactionImplNew")
     private BadgeTransactionService badgeTransactionService;
 
     @GetMapping("/{memberId}/active")
@@ -22,13 +25,13 @@ public class BadgeTransactionController {
         return badgeTransactionService.filterActiveBadgeByMemberId(memberId);
     }
 
-    @GetMapping
-    public List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId) {
+    @GetMapping("/{memberId}")
+    public List<BadgeTransaction> findAllBadgeTransactionByMemberId(@PathVariable int memberId) {
         return badgeTransactionService.findAllBadgeTransactionByMemberId(memberId);
     }
 
     @PostMapping
-    public void addOneTransaction(BadgeTransaction badgeTransaction) {
+    public void addOneTransaction(@RequestBody BadgeTransactionRequestDTO badgeTransaction) {
         badgeTransactionService.generateBadgeTransaction(badgeTransaction);
     }
 
