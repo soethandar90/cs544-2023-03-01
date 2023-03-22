@@ -1,7 +1,7 @@
 package edu.miu.cs.cs544.controller;
 
 
-import edu.miu.cs.cs544.dto.RoleDto;
+import edu.miu.cs.cs544.contract.RoleDTO;
 import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +33,8 @@ public class RoleController {
     }
 
     @GetMapping("/roleId")
-    public ResponseEntity<RoleDto> getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
-        RoleDto roleDto = this.roleService.getOneRoleByRoleId(roleId);
-        return new ResponseEntity<RoleDto>(roleDto, HttpStatus.OK);
+    public ResponseEntity<RoleDTO> getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
+        RoleDTO roleDto = this.roleService.getOneRoleByRoleId(roleId);
+        return new ResponseEntity<RoleDTO>(roleDto, HttpStatus.OK);
     }
 }

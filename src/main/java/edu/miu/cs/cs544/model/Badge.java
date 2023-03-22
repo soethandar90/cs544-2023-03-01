@@ -1,6 +1,7 @@
 package edu.miu.cs.cs544.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.miu.cs.cs544.common.BadgeStatusType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

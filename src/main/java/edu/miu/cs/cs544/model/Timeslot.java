@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.model;
 
+import edu.miu.cs.cs544.common.Day;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Time;
-import java.time.LocalTime;
 
 @Entity
 @Data

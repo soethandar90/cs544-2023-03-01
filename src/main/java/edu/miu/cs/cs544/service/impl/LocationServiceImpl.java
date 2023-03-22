@@ -1,4 +1,4 @@
-package edu.miu.cs.cs544.service.imp;
+package edu.miu.cs.cs544.service.impl;
 
 import edu.miu.cs.cs544.model.Location;
 import edu.miu.cs.cs544.repository.LocationRepository;

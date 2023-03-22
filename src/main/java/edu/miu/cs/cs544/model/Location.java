@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.model;
 
+import edu.miu.cs.cs544.common.LocationType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Data

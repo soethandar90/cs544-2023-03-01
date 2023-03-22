@@ -1,9 +1,9 @@
-package edu.miu.cs.cs544.dto;
+package edu.miu.cs.cs544.contract;
 
 import lombok.Data;
 
 @Data
-public class RoleDto {
+public class RoleDTO {
 
     private int roleId;
     private String roleName;

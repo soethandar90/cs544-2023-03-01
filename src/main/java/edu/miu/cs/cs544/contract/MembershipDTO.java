@@ -1,14 +1,14 @@
-package edu.miu.cs.cs544.dto;
+package edu.miu.cs.cs544.contract;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 
 
 @Data
-public class Membership {
+public class MembershipDTO {
     private long membershipId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private MembershipType type;
-    private MembershipPlan plan;
+    private MembershipPlanDTO plan;
 }

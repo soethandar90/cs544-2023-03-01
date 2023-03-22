@@ -1,4 +1,4 @@
-package edu.miu.cs.cs544.model;
+package edu.miu.cs.cs544.common;
 
 public enum MembershipType {
     LIMITED, UNLIMITED , CHECKER;

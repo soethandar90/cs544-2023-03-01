@@ -1,17 +1,9 @@
 package edu.miu.cs.cs544;
 
-import edu.miu.cs.cs544.dto.Day;
-import edu.miu.cs.cs544.dto.LocationType;
-import edu.miu.cs.cs544.dto.*;
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.sql.Time;
-
-import java.time.LocalTime;
 
 @SpringBootApplication
 public class Application {//implements CommandLineRunner {
