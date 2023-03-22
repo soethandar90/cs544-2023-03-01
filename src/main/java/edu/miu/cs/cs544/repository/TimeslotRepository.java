@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface TimeslotRepository extends JpaRepository<Timeslot, Integer> {
 
-    @Query(value="SELECT * FROM timeslot WHERE locationId=:locationId AND day=:day", nativeQuery = true)
+    @Query(value="SELECT * FROM timeslot WHERE locationId=:locationId AND dayOfWeek=:day", nativeQuery = true)
     public Optional<Timeslot> findTimeslotByLocationIdAndDay(@Param("day") String day, @Param("locationId") int locationId);
 }

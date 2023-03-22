@@ -5,6 +5,7 @@ import edu.miu.cs.cs544.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -30,7 +31,7 @@ public class MembershipController {
     }
 
     @GetMapping("/{memberId}")
-    public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(@PathVariable int memberId) {
+    public Optional<List<Membership>> findAllMembershipsOfOneMemberByMemberId(@PathVariable int memberId) {
         return membershipService.findAllMembershipsOfOneMemberByMemberId(memberId);
     }
 }

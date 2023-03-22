@@ -13,4 +13,8 @@ import java.util.Set;
 public interface BadgeRepository extends JpaRepository<Badge,Integer> {
     @Query(value="SELECT * FROM badge WHERE memberId=:memberId", nativeQuery = true)
     Optional<List<Badge>> findAllByMemberId(@Param("memberId") int memberId);
+
+
+    @Query(value="SELECT * FROM badge WHERE badgeCode=:badge", nativeQuery = true)
+    Optional<Badge> findByBadge(@Param("badge") String badge);
 }

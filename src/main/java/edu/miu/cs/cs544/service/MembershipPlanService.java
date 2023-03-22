@@ -15,4 +15,5 @@ public interface MembershipPlanService {
     public List <MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id);
   public Optional<MembershipPlan> getMembershipPlanById(int id);
 
+    List<Location> findLocationByPlan(Integer planid);
 }

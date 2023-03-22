@@ -50,7 +50,7 @@ public class MemberController {
     }
 
     @GetMapping("/{memberId}/memberships")
-    public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(@PathVariable int memberId) {
+    public Optional<List<Membership>> findAllMembershipsOfOneMemberByMemberId(@PathVariable int memberId) {
         return membershipService.findAllMembershipsOfOneMemberByMemberId(memberId);
     }
     @GetMapping("/{memberId}/badges")
