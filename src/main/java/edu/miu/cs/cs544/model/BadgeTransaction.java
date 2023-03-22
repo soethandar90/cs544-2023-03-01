@@ -39,7 +39,7 @@ public class BadgeTransaction {
 
     @ManyToOne
     @JoinColumn(name = "planId")
-    private Plan plan;
+    private MembershipPlan plan;
 
     @ManyToOne
     @JoinColumn(name = "badgeId")
