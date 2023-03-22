@@ -19,8 +19,8 @@ public class MembershipPlanController {
     private MembershipPlanService membershipPlanService;
 
     @GetMapping
-    public List<MembershipPlan> findAll() {
-        return membershipPlanService.findAllMembershipPlanOfmemberByMemberId();
+    public List<MembershipPlan> findAll(int id) {
+        return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(id);
     }
 
     @PostMapping

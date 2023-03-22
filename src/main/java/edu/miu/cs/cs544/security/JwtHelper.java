@@ -9,13 +9,13 @@ import java.util.Map;
 @Component
 public class JwtHelper {
     private final String secret = "top-secret";
-    private final long expirataion = 5 * 60 * 60 * 60;
+    private final long expiration = 50 * 60 * 60 * 60;
 
     public String generateToken(String email) {
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirataion))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
@@ -24,7 +24,7 @@ public class JwtHelper {
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirataion * 60))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration * 60))
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
@@ -60,7 +60,7 @@ public class JwtHelper {
     public String doGenerateRefreshToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + expirataion))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
