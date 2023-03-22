@@ -9,5 +9,4 @@ public interface BadgeService {
     void addOneBadge(Badge badge);
     void deactivateOneBadgeByBadgeId(int id);
   List<Badge> findAllBadgesOfOneMemberByMemberId(int id);
-    public boolean isBadgeActive(int badgeId );
 }

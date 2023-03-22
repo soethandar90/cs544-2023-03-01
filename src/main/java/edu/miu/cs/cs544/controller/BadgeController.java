@@ -20,7 +20,7 @@ public class BadgeController {
     }
 
     @PostMapping
-    public void addOneBadge(@RequestBody Badge badge) {
+    public void addOneBadge(@PathVariable int id,@RequestBody Badge badge) {
         badgeService.addOneBadge(badge);
     }
 
