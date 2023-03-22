@@ -1,7 +1,9 @@
 package edu.miu.cs.cs544.controller;
 
 import edu.miu.cs.cs544.model.Member;
+import edu.miu.cs.cs544.model.Membership;
 import edu.miu.cs.cs544.service.MemberService;
+import edu.miu.cs.cs544.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,9 @@ import java.util.Optional;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private MembershipService membershipService;
+
 
     @GetMapping("/{id}")
     public Optional<Member> findOneMemberByMemberId(@PathVariable int id) {
@@ -39,4 +44,10 @@ public class MemberController {
         return memberService.findAllMembers();
 
     }
+
+    @GetMapping("/{memberId}/memberships")
+    public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(@PathVariable int memberId) {
+        return membershipService.findAllMembershipsOfOneMemberByMemberId(memberId);
+    }
+
 }

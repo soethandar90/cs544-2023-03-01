@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,6 @@ public class Badge {
 
     @ManyToOne
     @JoinColumn(name="memberId")
+    @JsonIgnore
     private Member member;
 }
-
-
