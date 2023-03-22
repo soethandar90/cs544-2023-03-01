@@ -17,7 +17,6 @@ import java.util.List;
 public class BadgeTransactionController {
 
     @Autowired
-    @Qualifier("BadgeTransactionImplNew")
     private BadgeTransactionService badgeTransactionService;
 
     @GetMapping("/{memberId}/active")
