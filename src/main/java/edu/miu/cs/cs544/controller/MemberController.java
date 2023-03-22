@@ -1,9 +1,7 @@
 package edu.miu.cs.cs544.controller;
 
-import edu.miu.cs.cs544.model.Member;
-import edu.miu.cs.cs544.model.Membership;
-import edu.miu.cs.cs544.service.MemberService;
-import edu.miu.cs.cs544.service.MembershipService;
+import edu.miu.cs.cs544.model.*;
+import edu.miu.cs.cs544.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +15,12 @@ public class MemberController {
     private MemberService memberService;
     @Autowired
     private MembershipService membershipService;
+    @Autowired
+    private BadgeService badgeService;
+    @Autowired
+    private MembershipPlanService membershipPlanService;
+    @Autowired
+    private BadgeTransactionService badgeTransactionService;
 
 
     @GetMapping("/{id}")
@@ -48,6 +52,18 @@ public class MemberController {
     @GetMapping("/{memberId}/memberships")
     public Optional<Membership> findAllMembershipsOfOneMemberByMemberId(@PathVariable int memberId) {
         return membershipService.findAllMembershipsOfOneMemberByMemberId(memberId);
+    }
+    @GetMapping("/{memberId}/badges")
+    public List<Badge> findAllBadgesOfOneMemberByMemberId(@PathVariable int memberId) {
+        return badgeService.findAllBadgesOfOneMemberByMemberId(memberId);
+    }
+    @GetMapping("/{memberId}/plans")
+    public List<MembershipPlan> findAllPlansOfOneMemberByMemberId(@PathVariable int memberId) {
+        return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(memberId);
+    }
+    @GetMapping("/{memberId}/transactions")
+    public List<BadgeTransaction> findAllTransactionsOfOneMemberByMemberId(@PathVariable int memberId) {
+        return badgeTransactionService.findAllBadgeTransactionByMemberId(memberId);
     }
 
 }

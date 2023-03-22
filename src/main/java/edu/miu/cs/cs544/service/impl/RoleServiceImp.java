@@ -40,10 +40,10 @@ public class RoleServiceImp implements RoleService {
         return "200";
     }
 
-    public RoleDTO getOneRoleByRoleId(Integer roleId){
-        //Role role = roleRepository.findById(roleId).get();
-        Role role = roleRepository.findById(roleId).orElseThrow(() -> new ResourceNotFoundException("Role", "roleId", roleId));
-        RoleDTO roleDto = this.modelMapper.map(role, RoleDTO.class);
-        return roleDto;
+    public Role getOneRoleByRoleId(Integer roleId){
+        Role role = roleRepository.findById(roleId).get();
+        //Role role = roleRepository.findById(roleId).orElseThrow(() -> new ResourceNotFoundException("Role", "roleId", roleId));
+     //   RoleDTO roleDto = this.modelMapper.map(role, Role.class);
+        return role;
     }
 }

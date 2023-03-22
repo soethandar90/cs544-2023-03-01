@@ -33,8 +33,8 @@ public class RoleController {
     }
 
     @GetMapping("/roleId")
-    public ResponseEntity<RoleDTO> getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
-        RoleDTO roleDto = this.roleService.getOneRoleByRoleId(roleId);
-        return new ResponseEntity<RoleDTO>(roleDto, HttpStatus.OK);
+    public Role getOneRoleByRoleId(@PathVariable("roleId") Integer roleId){
+        Role roleDto = roleService.getOneRoleByRoleId(roleId);
+        return roleDto;
     }
 }
