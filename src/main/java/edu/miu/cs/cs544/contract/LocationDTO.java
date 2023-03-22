@@ -1,12 +1,12 @@
 package edu.miu.cs.cs544.contract;
 
+import edu.miu.cs.cs544.common.LocationType;
 import lombok.Data;
 import java.util.List;
 
 
 @Data
 public class LocationDTO {
-    private int locationId;
     private String locationName;
     private String description;
     private LocationType locationType;

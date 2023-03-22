@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 @Data
 public class BadgeTransactionDTO {
-    private int transactionId;
     private LocalDate transactionTime;
     private String transactionType;
     private LocationDTO location;

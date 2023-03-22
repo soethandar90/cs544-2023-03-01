@@ -31,11 +31,9 @@ public class AwesomeUserDetails implements UserDetails {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        var result= roles.stream()
-                // ??????
+        return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_"+role.getRoleName().toUpperCase(Locale.ROOT)))
                 .collect(Collectors.toList());
-        return result;
     }
 
 
