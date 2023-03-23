@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.controller;
 
+import edu.miu.cs.cs544.contract.LocationDTO;
 import edu.miu.cs.cs544.model.Location;
 import edu.miu.cs.cs544.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ public class LocationController {
     private LocationService locationService;
 
     @GetMapping("/{id}")
-    public Location findOneLocationById(@PathVariable int id) {
+    public LocationDTO findOneLocationById(@PathVariable int id) {
         return locationService.findOneLocationByBadgeId(id);
     }
 
     @GetMapping
-    public List<Location> findLocationList() {
+    public List<LocationDTO> findLocationList() {
         return locationService.findAllLocations();
     }
 

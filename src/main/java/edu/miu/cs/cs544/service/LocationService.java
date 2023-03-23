@@ -1,14 +1,15 @@
 package edu.miu.cs.cs544.service;
 
+import edu.miu.cs.cs544.contract.LocationDTO;
 import edu.miu.cs.cs544.model.Location;
 
 import java.util.List;
 
 public interface LocationService {
 
-    Location findOneLocationByBadgeId(int id);
+    LocationDTO findOneLocationByBadgeId(int id);
 
-    List<Location> findAllLocations();
+    List<LocationDTO> findAllLocations();
 
     Location addOneLocation(Location location);
 

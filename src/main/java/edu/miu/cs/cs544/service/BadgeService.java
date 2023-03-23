@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.service;
 
+import edu.miu.cs.cs544.contract.BadgeDTO;
 import edu.miu.cs.cs544.model.Badge;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface BadgeService {
 
     void deactivateOneBadgeByMemberId(int id);
 
-    List<Badge> findAllBadgesOfOneMemberByMemberId(int id);
+    List<BadgeDTO> findAllBadgesOfOneMemberByMemberId(int id);
 }
