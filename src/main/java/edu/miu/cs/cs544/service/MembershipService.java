@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface MembershipService {
     Membership addOneMembership(Membership membership);
 
-    Membership updateOneMembershipByMembershipId(Integer membershipId,Membership membership);
+    Membership updateOneMembershipByMembershipId(int membershipId,Membership membership);
 
     void deleteOneMembershipByMembershipId(int membershipId);
 
