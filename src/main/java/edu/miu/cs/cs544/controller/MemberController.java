@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.controller;
 
+import edu.miu.cs.cs544.contract.BadgeDTO;
 import edu.miu.cs.cs544.model.*;
 import edu.miu.cs.cs544.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class MemberController {
     }
 
     @GetMapping("/{memberId}/badges")
-    public List<Badge> findAllBadgesOfOneMemberByMemberId(@PathVariable int memberId) {
+    public List<BadgeDTO> findAllBadgesOfOneMemberByMemberId(@PathVariable int memberId) {
         return badgeService.findAllBadgesOfOneMemberByMemberId(memberId);
     }
 

@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.controller;
 
+import edu.miu.cs.cs544.contract.BadgeDTO;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.service.BadgeService;
 import edu.miu.cs.cs544.service.BadgeTransactionService;
@@ -27,7 +28,7 @@ public class BadgeController {
     }
 
     @GetMapping("/{id}")
-    public List<Badge> findAllBadgesOfOneMemberByMemberId(@PathVariable int id) {
+    public List<BadgeDTO> findAllBadgesOfOneMemberByMemberId(@PathVariable int id) {
         return badgeService.findAllBadgesOfOneMemberByMemberId(id);
     }
 }
