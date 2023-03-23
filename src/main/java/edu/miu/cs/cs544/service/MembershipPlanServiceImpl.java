@@ -21,13 +21,13 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
     private LocationRepository locationRepository;
 
     @Override
-    public void addOnePlan(MembershipPlan membershipPlan) {
-        membershipPlanRepository.save(membershipPlan);
+    public MembershipPlan addOnePlan(MembershipPlan membershipPlan) {
+        return membershipPlanRepository.save(membershipPlan);
     }
 
     @Override
-    public void updateOnePlanByPlanId(MembershipPlan membershipPlan) {
-        membershipPlanRepository.save(membershipPlan);
+    public MembershipPlan updateOnePlanByPlanId(MembershipPlan membershipPlan) {
+        return membershipPlanRepository.save(membershipPlan);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
     }
 
     @Override
-    public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id) {
+    public List<MembershipPlan> findAllMembershipPlanOfMemberByMemberId(int id) {
         return membershipPlanRepository.findAllMembershipPlanOfmemberByMemberId(id);
     }
 

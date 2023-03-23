@@ -61,7 +61,7 @@ public class MemberController {
 
     @GetMapping("/{memberId}/plans")
     public List<MembershipPlan> findAllPlansOfOneMemberByMemberId(@PathVariable int memberId) {
-        return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(memberId);
+        return membershipPlanService.findAllMembershipPlanOfMemberByMemberId(memberId);
     }
 
     @GetMapping("/{memberId}/transactions")

@@ -21,7 +21,7 @@ public class MembershipPlanController {
 
     @GetMapping("/{id}")
     public List<MembershipPlan> findAll(@PathVariable int id) {
-        return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(id);
+        return membershipPlanService.findAllMembershipPlanOfMemberByMemberId(id);
     }
 
     @PostMapping

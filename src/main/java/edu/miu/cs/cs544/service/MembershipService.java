@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MembershipService {
-    void addOneMembership(Membership membership);
+    Membership addOneMembership(Membership membership);
 
-    void updateOneMembershipByMembershipId(Membership membership);
+    Membership updateOneMembershipByMembershipId(Membership membership);
 
     void deleteOneMembershipByMembershipId(int membershipId);
 

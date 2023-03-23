@@ -20,15 +20,14 @@ public class MemberServiceImpl implements MemberService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void addOneNewMember(Member member) {
-
+    public Member addOneNewMember(Member member) {
         member.setPassword(bCryptPasswordEncoder.encode(member.getPassword()));
-        memberRepository.save(member);
+        return memberRepository.save(member);
     }
 
     @Override
-    public void updateOneMemberByMemberId(Member member) {
-        memberRepository.save(member);
+    public Member updateOneMemberByMemberId(Member member) {
+        return memberRepository.save(member);
     }
 
     @Override
