@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface BadgeService {
 
-    void addOneBadge(Badge badge);
+    Badge addOneBadge(Badge badge);
 
-    void deactivateOneBadgeByBadgeId(int id);
+    Badge deactivateOneBadgeByMemberId(int id);
 
     List<Badge> findAllBadgesOfOneMemberByMemberId(int id);
 }

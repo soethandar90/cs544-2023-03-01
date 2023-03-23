@@ -51,6 +51,11 @@ public class LocationServiceImpl implements LocationService {
         return locationRepository.findLocationsOfOnePlanByPlanId(id);
     }
 
+    @Override
+    public void deleteOneLocationByLocationId(int id) {
+        locationRepository.deleteById(id);
+    }
+
 
 }
 
