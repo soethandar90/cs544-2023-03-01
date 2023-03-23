@@ -29,13 +29,13 @@ public class MemberController {
     }
 
     @PostMapping
-    public void addOneNewMember(@RequestBody Member member) {
-        memberService.addOneNewMember(member);
+    public Member addOneNewMember(@RequestBody Member member) {
+        return memberService.addOneNewMember(member);
     }
 
     @PutMapping("/{id}")
-    public void updateOneMemberByMemberId(@RequestBody Member member, @PathVariable String id) {
-        memberService.updateOneMemberByMemberId(member);
+    public Member updateOneMemberByMemberId(@RequestBody Member member, @PathVariable String id) {
+        return memberService.updateOneMemberByMemberId(member);
     }
 
     @DeleteMapping("/{id}")

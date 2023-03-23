@@ -19,9 +19,7 @@ public class RoleController {
 
     @PostMapping("/")
     public Role addOneRole(@RequestBody Role role) {
-        roleService.addOneRole(role);
-
-        return role;
+        return roleService.addOneRole(role);
     }
 
     @PutMapping("/{id}")

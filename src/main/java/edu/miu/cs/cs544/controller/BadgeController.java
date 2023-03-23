@@ -17,13 +17,13 @@ public class BadgeController {
     public BadgeTransactionService badgeTransactionService;
 
     @PutMapping("/{id}")
-    public void deactivateOneBadgeByMemberId(@PathVariable int id) {
-        badgeService.deactivateOneBadgeByMemberId(id);
+    public Badge deactivateOneBadgeByMemberId(@PathVariable int id) {
+        return badgeService.deactivateOneBadgeByMemberId(id);
     }
 
     @PostMapping
-    public void addOneBadge(@PathVariable int id, @RequestBody Badge badge) {
-        badgeService.addOneBadge(badge);
+    public Badge addOneBadge(@PathVariable int id, @RequestBody Badge badge) {
+        return badgeService.addOneBadge(badge);
     }
 
     @GetMapping("/{id}")
