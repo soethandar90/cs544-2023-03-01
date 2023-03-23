@@ -10,9 +10,9 @@ public interface LocationService {
 
     List<Location> findAllLocations();
 
-    void addOneLocation(Location location);
+    Location addOneLocation(Location location);
 
-    void updateOneLocation(int locationId, Location location);
+    Location updateOneLocation(int locationId, Location location);
 
     List<Location> findAllLocationOfOnePlanByPlanId(int id);
 

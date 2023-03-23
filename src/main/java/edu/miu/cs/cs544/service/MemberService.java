@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface MemberService {
 
-    void addOneNewMember(Member member);
+    Member addOneNewMember(Member member);
 
-    void updateOneMemberByMemberId(Member member);
+    Member updateOneMemberByMemberId(Member member);
 
     void deleteOneMemberByMemberId(int id);
 

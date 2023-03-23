@@ -9,13 +9,13 @@ import java.util.Optional;
 public interface MembershipPlanService {
 
 
-    void addOnePlan(MembershipPlan membershipPlan);
+    MembershipPlan addOnePlan(MembershipPlan membershipPlan);
 
-    void updateOnePlanByPlanId(MembershipPlan membershipPlan);
+    MembershipPlan updateOnePlanByPlanId(MembershipPlan membershipPlan);
 
     void deleteOnePlan(int planId);
 
-    List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id);
+    List<MembershipPlan> findAllMembershipPlanOfMemberByMemberId(int id);
 
     Optional<MembershipPlan> getMembershipPlanById(int id);
 

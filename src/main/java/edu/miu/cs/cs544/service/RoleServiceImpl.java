@@ -16,16 +16,14 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role addOneRole(Role role) {
-        roleRepository.save(role);
-        return role;
+        return roleRepository.save(role);
     }
 
     @Override
     public Role updateOneRoleByRoleId(Integer id, String name) {
         Role role = roleRepository.findById(id).get();
         role.setRoleName(name);
-        roleRepository.save(role);
-        return role;
+        return roleRepository.save(role);
     }
 
     @Override

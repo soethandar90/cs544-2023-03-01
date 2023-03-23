@@ -17,13 +17,13 @@ public class MembershipServiceImpl implements MembershipService {
     private MembershipRepository membershipRepository;
 
     @Override
-    public void addOneMembership(Membership membership) {
-        membershipRepository.save(membership);
+    public Membership addOneMembership(Membership membership) {
+        return membershipRepository.save(membership);
     }
 
     @Override
-    public void updateOneMembershipByMembershipId(Membership membership) {
-        membershipRepository.save(membership);
+    public Membership updateOneMembershipByMembershipId(Membership membership) {
+       return membershipRepository.save(membership);
     }
 
     @Override

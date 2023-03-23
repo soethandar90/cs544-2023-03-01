@@ -26,12 +26,12 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public void addOneLocation(Location location) {
-        locationRepository.save(location);
+    public Location addOneLocation(Location location) {
+       return locationRepository.save(location);
     }
 
     @Override
-    public void updateOneLocation(int locationId, Location location) {
+    public Location updateOneLocation(int locationId, Location location) {
         Optional<Location> optionalLocation = locationRepository.findById(locationId);
         if (!optionalLocation.isPresent()) {
             System.err.println("Location not found with id " + locationId);
@@ -43,7 +43,7 @@ public class LocationServiceImpl implements LocationService {
         existingLocation.setDescription(location.getDescription());
         existingLocation.setLocationType(location.getLocationType());
         existingLocation.setCapacity(location.getCapacity());
-        locationRepository.save(existingLocation);
+        return locationRepository.save(existingLocation);
     }
 
     @Override
