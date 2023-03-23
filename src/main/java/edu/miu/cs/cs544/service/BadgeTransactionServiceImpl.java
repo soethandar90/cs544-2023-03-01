@@ -1,6 +1,6 @@
 package edu.miu.cs.cs544.service;
 
-import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
+import edu.miu.cs.cs544.contract.BadgeTransactionDTO;
 import edu.miu.cs.cs544.exception.InvalidTransactionException;
 import edu.miu.cs.cs544.model.*;
 import edu.miu.cs.cs544.repository.*;
@@ -51,10 +51,10 @@ public class BadgeTransactionServiceImpl implements BadgeTransactionService {
     }
 
     @Override
-    public boolean generateBadgeTransaction(BadgeTransactionRequestDTO badgeTransactionRequestDTO) {
-        MembershipPlan membershipPlan = membershipPlanRepository.findById(badgeTransactionRequestDTO.getPlan()).get();
-        Location location = locationRepository.findById(badgeTransactionRequestDTO.getLocation()).get();
-        Badge badge = badgeRepository.findByBadge(badgeTransactionRequestDTO.getBadge()).get();
+    public boolean generateBadgeTransaction(BadgeTransactionDTO badgeTransactionDTO) {
+        MembershipPlan membershipPlan = membershipPlanRepository.findById(badgeTransactionDTO.getPlan()).get();
+        Location location = locationRepository.findById(badgeTransactionDTO.getLocation()).get();
+        Badge badge = badgeRepository.findByBadge(badgeTransactionDTO.getBadge()).get();
         BadgeTransaction badgeTransaction = new BadgeTransaction();
         badgeTransaction.setBadge(badge);
         badgeTransaction.setPlan(membershipPlan);

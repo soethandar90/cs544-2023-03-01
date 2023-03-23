@@ -1,6 +1,6 @@
 package edu.miu.cs.cs544.service;
 
-import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
+import edu.miu.cs.cs544.contract.BadgeTransactionDTO;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.model.BadgeTransaction;
 
@@ -14,7 +14,7 @@ public interface BadgeTransactionService {
 
     Badge filterActiveBadgeByMemberId(int memberId);
 
-    boolean generateBadgeTransaction(BadgeTransactionRequestDTO badgeTransaction);
+    boolean generateBadgeTransaction(BadgeTransactionDTO badgeTransaction);
 
     boolean isBadgeActive(Badge badge);
 
