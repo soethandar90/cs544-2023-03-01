@@ -25,13 +25,13 @@ public class MembershipPlanController {
     }
 
     @PostMapping
-    public void addOnePlan(@RequestBody MembershipPlan membershipPlan) {
-        membershipPlanService.addOnePlan(membershipPlan);
+    public MembershipPlan addOnePlan(@RequestBody MembershipPlan membershipPlan) {
+        return membershipPlanService.addOnePlan(membershipPlan);
     }
 
     @PutMapping("/{id}")
-    public void updateOnePlan(@PathVariable Integer id, @RequestBody MembershipPlan membershipPlan) {
-        membershipPlanService.updateOnePlanByPlanId(membershipPlan);
+    public MembershipPlan updateOnePlan(@PathVariable Integer id, @RequestBody MembershipPlan membershipPlan) {
+        return membershipPlanService.updateOnePlanByPlanId(membershipPlan);
     }
 
     @DeleteMapping("/{id}")

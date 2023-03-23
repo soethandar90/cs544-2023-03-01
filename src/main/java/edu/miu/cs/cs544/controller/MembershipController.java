@@ -16,13 +16,13 @@ public class MembershipController {
     private MembershipService membershipService;
 
     @PostMapping
-    public void addOneMembership(@RequestBody Membership membership) {
-        membershipService.addOneMembership(membership);
+    public Membership addOneMembership(@RequestBody Membership membership) {
+        return membershipService.addOneMembership(membership);
     }
 
     @PutMapping("/{membershipId}")
-    public void updateOneMembershipByMembershipId(@RequestBody Membership membership) {
-        membershipService.updateOneMembershipByMembershipId(membership);
+    public Membership updateOneMembershipByMembershipId(@RequestBody Membership membership) {
+        return membershipService.updateOneMembershipByMembershipId(membership);
     }
 
     @DeleteMapping("/{membershipId}")

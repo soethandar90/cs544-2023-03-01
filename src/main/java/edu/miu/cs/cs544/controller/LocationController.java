@@ -24,13 +24,13 @@ public class LocationController {
     }
 
     @PostMapping
-    public void addOneLocation(@RequestBody Location location) {
-        locationService.addOneLocation(location);
+    public Location addOneLocation(@RequestBody Location location) {
+        return locationService.addOneLocation(location);
     }
 
     @PutMapping
-    public void updateOneLocation(@PathVariable int locationId, @RequestBody Location location) {
-        locationService.updateOneLocation(locationId, location);
+    public Location updateOneLocation(@PathVariable int locationId, @RequestBody Location location) {
+        return locationService.updateOneLocation(locationId, location);
     }
 
     @DeleteMapping("/{id}")
