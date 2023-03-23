@@ -2,10 +2,12 @@ package edu.miu.cs.cs544.repository;
 
 import edu.miu.cs.cs544.model.Membership;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,4 +24,8 @@ public interface MembershipRepository extends JpaRepository<Membership, Integer>
 
     @Query(value = "SELECT COUNT(*) FROM membership WHERE plan_planId=:planId AND memberId=:memberid AND membershipType='UNLIMITED'", nativeQuery = true)
     int searchIfUnlimitedMembership(@Param("memberid") int memberId, @Param("planId") int planId);
+    @Query(value="SELECT COUNT(*) FROM membership WHERE plan_planId=:planId AND memberId=:memberid AND membershipType='UNLIMITED'", nativeQuery = true)
+    public int searchIfUnlimitedMembership(@Param("memberid") int memberId,@Param("planId") int planId);
+    @Query(value="SELECT * FROM membership WHERE plan_planId=:planId AND memberId IN (SELECT memberId FROM member_role WHERE roleId=:roleId)",nativeQuery = true)
+    public Optional<List<Membership>> updateUsage(@Param("planId") int planId,@Param("roleId") int roleId);
 }
