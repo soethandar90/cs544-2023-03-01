@@ -14,8 +14,7 @@ public interface LocationService {
 
     public void updateOneLocation(int locationId, Location location);
 
-
-//    public List<Location> findAllLocationOfOnePlanByPlanId(int id);
+    public List<Location> findAllLocationOfOnePlanByPlanId(int id);
 
 
 }

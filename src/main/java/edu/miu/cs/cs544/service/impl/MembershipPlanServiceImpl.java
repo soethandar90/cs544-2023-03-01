@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,13 +39,13 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
 
     @Override
     public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id) {
-        return null;
+        return membershipPlanRepository.findAllMembershipPlanOfmemberByMemberId( id);
     }
 
     //@Override
-    public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId() {
-        return membershipPlanRepository.findAll();
-    }
+   // public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId() {
+      //  return membershipPlanRepository.findAll();
+   // }
 
     @Override
     public Optional<MembershipPlan> getMembershipPlanById(int id) {

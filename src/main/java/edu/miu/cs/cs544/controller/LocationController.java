@@ -31,11 +31,4 @@ public class LocationController {
     public void updateOneLocation(@PathVariable int locationId, @RequestBody Location location) {
         locationService.updateOneLocation(locationId, location);
     }
-
-//    @GetMapping("/{id}")
-//    public List<Location> findAllLocationOfOnePlanByPlanId(int planId){
-//        return locationService.findAllLocationOfOnePlanByPlanId(planId);
-//
-//    }
-
 }

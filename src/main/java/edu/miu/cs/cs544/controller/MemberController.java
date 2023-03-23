@@ -34,7 +34,7 @@ public class MemberController {
     }
 
     @PutMapping("/{id}")
-    public void updateOneMemberByMemberId(@RequestBody Member member) {
+    public void updateOneMemberByMemberId(@RequestBody Member member, @PathVariable String id) {
         memberService.updateOneMemberByMemberId(member);
     }
 
@@ -62,7 +62,7 @@ public class MemberController {
         return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(memberId);
     }
     @GetMapping("/{memberId}/transactions")
-    public List<BadgeTransaction> findAllTransactionsOfOneMemberByMemberId(@PathVariable int memberId) {
+    public Optional<List<BadgeTransaction>> findAllTransactionsOfOneMemberByMemberId(@PathVariable int memberId) {
         return badgeTransactionService.findAllBadgeTransactionByMemberId(memberId);
     }
 

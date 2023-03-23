@@ -11,12 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/membershipPlans")
+@RequestMapping("/plans")
 public class MembershipPlanController {
 
 
     @Autowired
     private MembershipPlanService membershipPlanService;
+    @Autowired
+    private LocationService locationService;
 
     @GetMapping
     public List<MembershipPlan> findAll(int id) {
@@ -39,5 +41,8 @@ public class MembershipPlanController {
     public void deleteOnePlan(@PathVariable int id) {
         membershipPlanService.deleteOnePlan(id);
     }
-
+@GetMapping("/{planid}/locations")
+    public List<Location> getAllLocationOfPlanByPlanId(@PathVariable int planid){
+        return locationService.findAllLocationOfOnePlanByPlanId(planid);
+}
 }
