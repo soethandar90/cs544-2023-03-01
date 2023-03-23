@@ -24,8 +24,6 @@ public interface MembershipRepository extends JpaRepository<Membership, Integer>
 
     @Query(value = "SELECT COUNT(*) FROM membership WHERE plan_planId=:planId AND memberId=:memberid AND membershipType='UNLIMITED'", nativeQuery = true)
     int searchIfUnlimitedMembership(@Param("memberid") int memberId, @Param("planId") int planId);
-    @Query(value="SELECT COUNT(*) FROM membership WHERE plan_planId=:planId AND memberId=:memberid AND membershipType='UNLIMITED'", nativeQuery = true)
-    public int searchIfUnlimitedMembership(@Param("memberid") int memberId,@Param("planId") int planId);
     @Query(value="SELECT * FROM membership WHERE plan_planId=:planId AND memberId IN (SELECT memberId FROM member_role WHERE roleId=:roleId)",nativeQuery = true)
-    public Optional<List<Membership>> updateUsage(@Param("planId") int planId,@Param("roleId") int roleId);
+    Optional<List<Membership>> updateUsage(@Param("planId") int planId,@Param("roleId") int roleId);
 }
