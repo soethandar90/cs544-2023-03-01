@@ -10,10 +10,11 @@ import edu.miu.cs.cs544.service.BadgeTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BadgeTransactionImpl implements BadgeTransactionService {
@@ -42,8 +43,8 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
     }
 
     @Override
-    public Optional<List<BadgeTransaction>> findAllBadgeTransactionByMemberId(int memberId) {
-        return badgeTransactionRepository.findAllTransactionOfOneMemberByMemberId(memberId);
+    public List<BadgeTransaction> findAllBadgeTransactionByMemberId(int memberId) {
+        return badgeTransactionRepository.findAllById(Collections.singleton(memberId));
     }
 
     @Override
@@ -61,7 +62,7 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
         badgeTransaction.setPlan(membershipPlan);
         badgeTransaction.setLocation(location);
         badgeTransaction.setTransactionTime(LocalDateTime.now());
-        badgeTransactionRepository.save(badgeTransaction);
+        ///badgeTransactionRepository.save(badgeTransaction);
 
         if (!isBadgeActive(badge)) {
             declineTransaction(badgeTransaction, "Badge Inactive");
@@ -76,9 +77,34 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
             declineTransaction(badgeTransaction, "Insufficient usage balance");
             throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Insufficient usage balance");
         }
+        if (usageCountSameDaySlot(badgeTransaction)){
+            declineTransaction(badgeTransaction, "Already Swiped Once");
+            throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Already Swiped Once");
+        }
 
         approveTransaction(badgeTransaction);
         return false;
+    }
+
+    private boolean usageCountSameDaySlot(BadgeTransaction badgeTransaction) {
+
+        //if exampted unlimited
+        int exampted = membershipRepository.searchIfUnlimitedMembership(badgeTransaction.getBadge().getMember().getMemberId(),badgeTransaction.getPlan().getPlanId());
+        if(exampted>0){
+            return false;
+        }  else {
+            Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(badgeTransaction.getTransactionTime().getDayOfWeek().toString(), badgeTransaction.getLocation().getLocationId()).get();
+            String start = LocalDate.now() + " " + timeslot.getStartTime();
+            String end = LocalDate.now() + " " + timeslot.getEndTime();
+            int count = badgeTransactionRepository.findCountByDate(badgeTransaction.getBadge().getBadgeId(), badgeTransaction.getLocation().getLocationId()
+                    , badgeTransaction.getPlan().getPlanId(), start, end);
+
+            if (count > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     public boolean isBadgeActive(Badge badge) {
