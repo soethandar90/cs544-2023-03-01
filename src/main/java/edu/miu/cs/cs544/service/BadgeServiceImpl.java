@@ -19,15 +19,15 @@ public class BadgeServiceImpl implements BadgeService {
 
     @Override
     public Badge addOneBadge(Badge badge) {
-        deactivateOneBadgeByMemberId(badge.getMember().getMemberId());
+        //deactivateOneBadgeByMemberId(badge.getMember().getMemberId());
         return badgeRepository.save(badge);
     }
 
     @Override
-    public Badge deactivateOneBadgeByMemberId(int memberId) {
+    public void deactivateOneBadgeByMemberId(int memberId) {
         Badge badge = badgeRepository.findActiveBadgeByMemberId(memberId);
         badge.setStatus(BadgeStatusType.INACTIVE);
-        return badgeRepository.save(badge);
+        badgeRepository.save(badge);
     }
 
     @Override

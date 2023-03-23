@@ -33,11 +33,9 @@ public class Badge {
     private BadgeStatusType status;
 
     @OneToMany(mappedBy = "badge")
-
     private List<BadgeTransaction> transaction;
 
     @ManyToOne
     @JoinColumn(name = "memberId")
-    @JsonIgnore
     private Member member;
 }
