@@ -35,20 +35,14 @@ public class BadgeTransactionServiceImpl implements BadgeTransactionService {
     private LocationRepository locationRepository;
 
 
-    @Override
-    public boolean generateBadgeTransaction(BadgeTransaction badgeTransaction) {
-        return false;
-    }
+
 
     @Override
     public Optional<List<BadgeTransaction>> findAllBadgeTransactionByMemberId(int memberId) {
         return badgeTransactionRepository.findAllTransactionOfOneMemberByMemberId(memberId);
     }
 
-    @Override
-    public Badge filterActiveBadgeByMemberId(int memberId) {
-        return null;
-    }
+
 
     @Override
     public boolean generateBadgeTransaction(BadgeTransactionDTO badgeTransactionDTO) {
