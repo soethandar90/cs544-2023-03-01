@@ -20,8 +20,8 @@ public class MembershipPlanController {
     @Autowired
     private LocationService locationService;
 
-    @GetMapping
-    public List<MembershipPlan> findAll(int id) {
+    @GetMapping("/{id}")
+    public List<MembershipPlan> findAll(@PathVariable int id) {
         return membershipPlanService.findAllMembershipPlanOfmemberByMemberId(id);
     }
 
@@ -31,7 +31,7 @@ public class MembershipPlanController {
     }
 
     @PutMapping("/{id}")
-    public void updateOnePlan(@PathVariable Integer id,@RequestBody MembershipPlan membershipPlan) {
+    public void updateOnePlan(@PathVariable Integer id, @RequestBody MembershipPlan membershipPlan) {
         //membershipPlanService.updateOnePlanByPlanId(membershipPlan);
         membershipPlanService.updateOnePlanByPlanId(membershipPlan);
 
@@ -41,8 +41,9 @@ public class MembershipPlanController {
     public void deleteOnePlan(@PathVariable int id) {
         membershipPlanService.deleteOnePlan(id);
     }
-@GetMapping("/{planid}/locations")
-    public List<Location> getAllLocationOfPlanByPlanId(@PathVariable int planid){
+
+    @GetMapping("/{planid}/locations")
+    public List<Location> getAllLocationOfPlanByPlanId(@PathVariable int planid) {
         return locationService.findAllLocationOfOnePlanByPlanId(planid);
-}
+    }
 }
