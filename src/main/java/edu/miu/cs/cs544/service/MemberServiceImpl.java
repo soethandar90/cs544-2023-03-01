@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.service;
 
+import edu.miu.cs.cs544.model.Location;
 import edu.miu.cs.cs544.model.Member;
 import edu.miu.cs.cs544.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,38 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member updateOneMemberByMemberId(Member member) {
-        return memberRepository.save(member);
+    public Member updateOneMemberByMemberId(int id, Member member) {
+
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if (!optionalMember.isPresent()) {
+            System.err.println("Member not found with id " + id);
+        }
+        Member existingmember = optionalMember.get();
+
+        // Update the existing Member with the new data
+        if(member.getFirstName()!=null || member.getFirstName()==""){
+            existingmember.setFirstName(member.getFirstName());
+        }
+        if(member.getLastName()!=null || member.getLastName()==""){
+            existingmember.setLastName(member.getLastName());
+        }
+        if(member.getEmail()!=null || member.getEmail()==""){
+            existingmember.setEmail(member.getEmail());
+        }
+
+        if(member.getPassword()!=null || member.getPassword()==""){
+            existingmember.setPassword(member.getPassword());
+        }
+
+        if(member.getRole()!=null){
+            existingmember.setRole(member.getRole());
+        }
+
+        if(member.getMembership()!=null){
+            existingmember.setMembership(member.getMembership());
+        }
+
+        return memberRepository.save(existingmember);
     }
 
     @Override
