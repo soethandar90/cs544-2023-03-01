@@ -11,7 +11,7 @@ public class MemberDTO {
     private String lastName;
     private String email;
     private String password;
-    private List<RoleDTO> role=new ArrayList<>();
+    private List<RoleDTO> role = new ArrayList<>();
     private List<BadgeDTO> badgeDTO;
     private List<MembershipDTO> membership;
 }

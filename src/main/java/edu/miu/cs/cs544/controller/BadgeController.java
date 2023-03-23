@@ -15,13 +15,14 @@ public class BadgeController {
     public BadgeService badgeService;
     @Autowired
     public BadgeTransactionService badgeTransactionService;
-    @PutMapping ("/{id}")
+
+    @PutMapping("/{id}")
     public void deactivateOneBadgeByBadgeId(@PathVariable int id) {
         badgeService.deactivateOneBadgeByBadgeId(id);
     }
 
     @PostMapping
-    public void addOneBadge(@PathVariable int id,@RequestBody Badge badge) {
+    public void addOneBadge(@PathVariable int id, @RequestBody Badge badge) {
         badgeService.addOneBadge(badge);
     }
 

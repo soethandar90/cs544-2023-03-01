@@ -1,11 +1,11 @@
 package edu.miu.cs.cs544.service;
 
-import edu.miu.cs.cs544.util.BadgeStatusType;
-import edu.miu.cs.cs544.util.BadgeTransactionType;
 import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
 import edu.miu.cs.cs544.exception.InvalidTransactionException;
 import edu.miu.cs.cs544.model.*;
 import edu.miu.cs.cs544.repository.*;
+import edu.miu.cs.cs544.util.BadgeStatusType;
+import edu.miu.cs.cs544.util.BadgeTransactionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,6 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
 
     @Autowired
     private LocationRepository locationRepository;
-
 
 
     @Override
@@ -64,20 +63,20 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
 
         if (!isBadgeActive(badge)) {
             declineTransaction(badgeTransaction, "Badge Inactive");
-            throw new InvalidTransactionException("transactionId","transactionTime", BadgeTransactionType.DECLINED.toString(),"Badge Inactive");
+            throw new InvalidTransactionException("transactionId", "transactionTime", BadgeTransactionType.DECLINED.toString(), "Badge Inactive");
         }
 
         if (!isTimeslotActive(badgeTransaction.getTransactionTime(), badgeTransaction.getLocation().getLocationId())) {
             declineTransaction(badgeTransaction, "Timeslot Inactive");
-            throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Timeslot Inactive");
+            throw new InvalidTransactionException("transactionId", "transactionTime", BadgeTransactionType.DECLINED.toString(), "Timeslot Inactive");
         }
-        if (usageCount(badgeTransaction.getPlan().getPlanId(),badgeTransaction.getBadge().getMember().getMemberId()) == 0) {
+        if (usageCount(badgeTransaction.getPlan().getPlanId(), badgeTransaction.getBadge().getMember().getMemberId()) == 0) {
             declineTransaction(badgeTransaction, "Insufficient usage balance");
-            throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Insufficient usage balance");
+            throw new InvalidTransactionException("transactionId", "transactionTime", BadgeTransactionType.DECLINED.toString(), "Insufficient usage balance");
         }
-        if (usageCountSameDaySlot(badgeTransaction)){
+        if (usageCountSameDaySlot(badgeTransaction)) {
             declineTransaction(badgeTransaction, "Already Swiped Once");
-            throw new InvalidTransactionException("transactionId","transactionTime",BadgeTransactionType.DECLINED.toString(),"Already Swiped Once");
+            throw new InvalidTransactionException("transactionId", "transactionTime", BadgeTransactionType.DECLINED.toString(), "Already Swiped Once");
         }
 
         approveTransaction(badgeTransaction);
@@ -87,44 +86,35 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
     private boolean usageCountSameDaySlot(BadgeTransaction badgeTransaction) {
 
         //if exampted unlimited
-        int exampted = membershipRepository.searchIfUnlimitedMembership(badgeTransaction.getBadge().getMember().getMemberId(),badgeTransaction.getPlan().getPlanId());
-        if(exampted>0){
+        int exampted = membershipRepository.searchIfUnlimitedMembership(badgeTransaction.getBadge().getMember().getMemberId(), badgeTransaction.getPlan().getPlanId());
+        if (exampted > 0) {
             return false;
-        }  else {
+        } else {
             Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(badgeTransaction.getTransactionTime().getDayOfWeek().toString(), badgeTransaction.getLocation().getLocationId()).get();
             String start = LocalDate.now() + " " + timeslot.getStartTime();
             String end = LocalDate.now() + " " + timeslot.getEndTime();
             int count = badgeTransactionRepository.findCountByDate(badgeTransaction.getBadge().getBadgeId(), badgeTransaction.getLocation().getLocationId()
                     , badgeTransaction.getPlan().getPlanId(), start, end);
 
-            if (count > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return count > 0;
         }
     }
 
     public boolean isBadgeActive(Badge badge) {
 
-        if (badge.getStatus().equals(BadgeStatusType.ACTIVE)) {
-            return true;
-        }
-        return false;
+        return badge.getStatus().equals(BadgeStatusType.ACTIVE);
     }
 
-    public int usageCount(int membershipPlanId,int memberId) {
-        return membershipRepository.findOneMembershipsOfOneMemberByMembershipId2(membershipPlanId,memberId).getCurrentUsage();
+    public int usageCount(int membershipPlanId, int memberId) {
+        return membershipRepository.findOneMembershipsOfOneMemberByMembershipId2(membershipPlanId, memberId).getCurrentUsage();
     }
 
     public boolean isTimeslotActive(LocalDateTime tranTime, int locationId) {
         Timeslot timeslot = timeslotRepository.findTimeslotByLocationIdAndDay(tranTime.getDayOfWeek().toString(), locationId).get();
         if (timeslot != null) {
             LocalTime transactionTime = tranTime.toLocalTime();
-            if (transactionTime.compareTo(timeslot.getStartTime().toLocalTime()) >= 0
-                    && transactionTime.compareTo(timeslot.getEndTime().toLocalTime()) <= 0) {
-                return true;
-            }
+            return !transactionTime.isBefore(timeslot.getStartTime().toLocalTime())
+                    && !transactionTime.isAfter(timeslot.getEndTime().toLocalTime());
         }
         return false;
     }
@@ -133,8 +123,8 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
         badgeTransactionRepository.save(badgeTransaction);
     }
 
-    private void decreaseUsage(int membershipPlanId,int memberId) {
-        Membership membership = membershipRepository.findOneMembershipsOfOneMemberByMembershipId2(membershipPlanId,memberId);
+    private void decreaseUsage(int membershipPlanId, int memberId) {
+        Membership membership = membershipRepository.findOneMembershipsOfOneMemberByMembershipId2(membershipPlanId, memberId);
         membership.setCurrentUsage(membership.getCurrentUsage() - 1);
         membershipRepository.save(membership);
     }
@@ -143,7 +133,7 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
     private void approveTransaction(BadgeTransaction badgeTransaction) {
         badgeTransaction.setTransactionType(BadgeTransactionType.ALLOWED);
         addOneTransaction(badgeTransaction);
-        decreaseUsage(badgeTransaction.getPlan().getPlanId(),badgeTransaction.getBadge().getMember().getMemberId());
+        decreaseUsage(badgeTransaction.getPlan().getPlanId(), badgeTransaction.getBadge().getMember().getMemberId());
     }
 
     private void declineTransaction(BadgeTransaction badgeTransaction, String reason) {

@@ -2,6 +2,7 @@ package edu.miu.cs.cs544.contract;
 
 import edu.miu.cs.cs544.util.LocationType;
 import lombok.Data;
+
 import java.util.List;
 
 

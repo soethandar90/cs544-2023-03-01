@@ -32,7 +32,6 @@ public class MembershipPlanController {
     @PutMapping("/{id}")
     public void updateOnePlan(@PathVariable Integer id, @RequestBody MembershipPlan membershipPlan) {
         membershipPlanService.updateOnePlanByPlanId(membershipPlan);
-
     }
 
     @DeleteMapping("/{id}")

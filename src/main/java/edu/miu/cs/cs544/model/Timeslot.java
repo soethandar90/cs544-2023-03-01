@@ -12,22 +12,22 @@ import java.sql.Time;
 
 @Entity
 @Data
-@Table(name="Timeslot")
+@Table(name = "Timeslot")
 @Validated
 @NoArgsConstructor
 @AllArgsConstructor
 public class Timeslot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="timeslotId")
+    @Column(name = "timeslotId")
     private int timeslotId;
-    @Column(name="startTime")
+    @Column(name = "startTime")
     @NotNull
     private Time startTime;
-    @Column(name="endTime")
+    @Column(name = "endTime")
     @NotNull
     private Time endTime;
-    @Column(name="dayOfWeek")
+    @Column(name = "dayOfWeek")
     @NotNull
     @Enumerated(EnumType.STRING)
     private Day dayOfWeek;

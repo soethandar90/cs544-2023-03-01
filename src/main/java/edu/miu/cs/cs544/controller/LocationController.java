@@ -22,6 +22,7 @@ public class LocationController {
     public List<Location> findLocationList() {
         return locationService.findAllLocations();
     }
+
     @PostMapping
     public void addOneLocation(@RequestBody Location location) {
         locationService.addOneLocation(location);

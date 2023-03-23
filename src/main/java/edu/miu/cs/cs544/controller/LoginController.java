@@ -4,9 +4,10 @@ import edu.miu.cs.cs544.model.LoginRequest;
 import edu.miu.cs.cs544.model.LoginResponse;
 import edu.miu.cs.cs544.model.RefreshTokenRequest;
 import edu.miu.cs.cs544.service.LoginService;
+import lombok.var;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import lombok.var;
+
 @RestController
 @RequestMapping("/login")
 @CrossOrigin
@@ -25,7 +26,7 @@ public class LoginController {
     }
 
     @PostMapping("/refreshToken")
-    public LoginResponse refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest){
+    public LoginResponse refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         return uaaService.refreshToken(refreshTokenRequest);
     }
 

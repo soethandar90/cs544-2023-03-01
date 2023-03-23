@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface MembershipPlanRepository extends JpaRepository<MembershipPlan, Integer> {
-    @Query(value="Select * from membership m inner join membershipplan mp on mp.planid = m.plan_planId where m.memberid = 2", nativeQuery = true)
-    public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(@Param("memberId") int memberId);
+    @Query(value = "Select * from membership m inner join membershipplan mp on mp.planid = m.plan_planId where m.memberid = 2", nativeQuery = true)
+    List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(@Param("memberId") int memberId);
 }

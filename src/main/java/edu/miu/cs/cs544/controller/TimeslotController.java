@@ -15,19 +15,21 @@ public class TimeslotController {
 
     @PostMapping("")
     public Timeslot addOneTimeslot(@RequestBody Timeslot timeslot) {
-       return timeslotService.addOneTimeslot(timeslot);
+        return timeslotService.addOneTimeslot(timeslot);
     }
+
     @PutMapping("/{id}")
-    public Timeslot updateOneTimeslotByTimeslotId(@PathVariable Integer id,@RequestBody Timeslot timeslot) {
+    public Timeslot updateOneTimeslotByTimeslotId(@PathVariable Integer id, @RequestBody Timeslot timeslot) {
         return timeslotService.updateOneTimeslotByTimeslotId(timeslot);
     }
+
     @DeleteMapping("/{id}")
-    public String deleteOneTimeslotBYTimeslotId(@PathVariable Integer id){
+    public String deleteOneTimeslotBYTimeslotId(@PathVariable Integer id) {
         return timeslotService.deleteOneTimeslotByTimeslotId(id);
     }
 
     @GetMapping()
-    public List<Timeslot> getAllTimeslotId(){
+    public List<Timeslot> getAllTimeslotId() {
         return timeslotService.findAll();
     }
 

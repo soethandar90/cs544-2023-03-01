@@ -34,7 +34,7 @@ public class RoleServiceImpl implements RoleService {
         return "200";
     }
 
-    public Role getOneRoleByRoleId(Integer roleId){
+    public Role getOneRoleByRoleId(Integer roleId) {
         return roleRepository.findById(roleId).get();
     }
 }

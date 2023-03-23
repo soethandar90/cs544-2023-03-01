@@ -2,7 +2,6 @@ package edu.miu.cs.cs544.service;
 
 import edu.miu.cs.cs544.model.Location;
 import edu.miu.cs.cs544.repository.LocationRepository;
-import edu.miu.cs.cs544.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,27 +32,27 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public void updateOneLocation(int locationId, Location location) {
-            Optional<Location> optionalLocation = locationRepository.findById(locationId);
-            if (!optionalLocation.isPresent()) {
-                System.err.println("Location not found with id " + locationId);
-            }
-            Location existingLocation = optionalLocation.get();
+        Optional<Location> optionalLocation = locationRepository.findById(locationId);
+        if (!optionalLocation.isPresent()) {
+            System.err.println("Location not found with id " + locationId);
+        }
+        Location existingLocation = optionalLocation.get();
 
-            // Update the existing location with the new data
-            existingLocation.setLocationName(location.getLocationName());
-            existingLocation.setDescription(location.getDescription());
-            existingLocation.setLocationType(location.getLocationType());
-            existingLocation.setCapacity(location.getCapacity());
-             locationRepository.save(existingLocation);
+        // Update the existing location with the new data
+        existingLocation.setLocationName(location.getLocationName());
+        existingLocation.setDescription(location.getDescription());
+        existingLocation.setLocationType(location.getLocationType());
+        existingLocation.setCapacity(location.getCapacity());
+        locationRepository.save(existingLocation);
     }
 
     @Override
     public List<Location> findAllLocationOfOnePlanByPlanId(int id) {
-       return locationRepository.findLocationsOfOnePlanByPlanId(id);
+        return locationRepository.findLocationsOfOnePlanByPlanId(id);
     }
 
 
-    }
+}
 
 
 

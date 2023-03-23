@@ -15,14 +15,14 @@ import java.util.Optional;
 @Transactional
 public class MembershipPlanServiceImpl implements MembershipPlanService {
     @Autowired
-   private MembershipPlanRepository membershipPlanRepository;
+    private MembershipPlanRepository membershipPlanRepository;
 
     @Autowired
     private LocationRepository locationRepository;
 
     @Override
     public void addOnePlan(MembershipPlan membershipPlan) {
-         membershipPlanRepository.save(membershipPlan);
+        membershipPlanRepository.save(membershipPlan);
     }
 
     @Override
@@ -37,12 +37,12 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
 
     @Override
     public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id) {
-        return membershipPlanRepository.findAllMembershipPlanOfmemberByMemberId( id);
+        return membershipPlanRepository.findAllMembershipPlanOfmemberByMemberId(id);
     }
 
     @Override
     public Optional<MembershipPlan> getMembershipPlanById(int id) {
-      return  membershipPlanRepository.findById(id);
+        return membershipPlanRepository.findById(id);
     }
 
     @Override

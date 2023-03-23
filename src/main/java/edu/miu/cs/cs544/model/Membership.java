@@ -12,27 +12,27 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="membership")
+@Table(name = "membership")
 @Validated
 @NoArgsConstructor
 @AllArgsConstructor
 public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="membershipId")
+    @Column(name = "membershipId")
     private int membershipId;
-    @Column(name="startDate")
+    @Column(name = "startDate")
     @NotNull
     private LocalDateTime startDate;
-    @Column(name="endDate")
+    @Column(name = "endDate")
     @NotNull
     private LocalDateTime endDate;
-    @Column(name="membershipType")
+    @Column(name = "membershipType")
     @NotNull
     @Enumerated(EnumType.STRING)
     private MembershipType type;
 
-    @Column(name="currentUsage")
+    @Column(name = "currentUsage")
     @NotNull
     private int currentUsage;
 

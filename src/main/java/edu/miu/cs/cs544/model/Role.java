@@ -10,17 +10,17 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
-@Table(name="Role")
+@Table(name = "Role")
 @Validated
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="roleId")
+    @Column(name = "roleId")
     private int roleId;
 
-    @Column(name="roleName")
+    @Column(name = "roleName")
     @NotNull
     private String roleName;
 

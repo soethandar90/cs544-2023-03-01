@@ -13,21 +13,21 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="Badge")
+@Table(name = "Badge")
 @Validated
 @NoArgsConstructor
 @AllArgsConstructor
 public class Badge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="badgeId")
+    @Column(name = "badgeId")
     private int badgeId;
 
-    @Column(name="badgeCode")
+    @Column(name = "badgeCode")
     @NotNull
     private String badgeCode;
 
-    @Column(name="status")
+    @Column(name = "status")
     @NotNull
     @Enumerated(EnumType.STRING)
     private BadgeStatusType status;
@@ -37,7 +37,7 @@ public class Badge {
     private List<BadgeTransaction> transaction;
 
     @ManyToOne
-    @JoinColumn(name="memberId")
+    @JoinColumn(name = "memberId")
     @JsonIgnore
     private Member member;
 }

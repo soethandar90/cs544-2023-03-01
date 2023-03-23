@@ -32,7 +32,7 @@ public class TimeslotServiceImpl implements TimeslotService {
 
     @Override
     public List<Timeslot> findAll() {
-       return timeslotRepository.findAll();
+        return timeslotRepository.findAll();
     }
 
 }

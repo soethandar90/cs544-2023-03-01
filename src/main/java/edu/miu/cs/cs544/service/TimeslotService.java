@@ -5,9 +5,11 @@ import edu.miu.cs.cs544.model.Timeslot;
 import java.util.List;
 
 public interface TimeslotService {
-    public Timeslot addOneTimeslot(Timeslot timeslot);
-    public Timeslot updateOneTimeslotByTimeslotId(Timeslot timeslot);
-    public String deleteOneTimeslotByTimeslotId(Integer id);
+    Timeslot addOneTimeslot(Timeslot timeslot);
 
-   public List<Timeslot> findAll();
+    Timeslot updateOneTimeslotByTimeslotId(Timeslot timeslot);
+
+    String deleteOneTimeslotByTimeslotId(Integer id);
+
+    List<Timeslot> findAll();
 }

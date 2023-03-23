@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService {
     private MemberRepository memberRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public void addOneNewMember(Member member) {
 

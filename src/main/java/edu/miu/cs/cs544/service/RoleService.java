@@ -3,8 +3,11 @@ package edu.miu.cs.cs544.service;
 import edu.miu.cs.cs544.model.Role;
 
 public interface RoleService {
-    public Role addOneRole(Role role);
-    public Role updateOneRoleByRoleId(Integer id, String name);
-    public String deleteOneRoleByRoleId(Integer id);
-    public Role getOneRoleByRoleId(Integer roleId);
+    Role addOneRole(Role role);
+
+    Role updateOneRoleByRoleId(Integer id, String name);
+
+    String deleteOneRoleByRoleId(Integer id);
+
+    Role getOneRoleByRoleId(Integer roleId);
 }
