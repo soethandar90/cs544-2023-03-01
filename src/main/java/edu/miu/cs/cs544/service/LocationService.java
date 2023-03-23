@@ -16,7 +16,7 @@ public interface LocationService {
 
     List<Location> findAllLocationOfOnePlanByPlanId(int id);
 
-
+    void deleteOneLocationByLocationId(int id);
 }
 
 

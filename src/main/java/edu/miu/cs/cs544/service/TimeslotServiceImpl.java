@@ -14,14 +14,12 @@ public class TimeslotServiceImpl implements TimeslotService {
 
     @Override
     public Timeslot addOneTimeslot(Timeslot timeslot) {
-        timeslotRepository.save(timeslot);
-        return timeslot;
+        return timeslotRepository.save(timeslot);
     }
 
     @Override
     public Timeslot updateOneTimeslotByTimeslotId(Timeslot timeslot) {
-        timeslotRepository.save(timeslot);
-        return timeslot;
+        return timeslotRepository.save(timeslot);
     }
 
     @Override

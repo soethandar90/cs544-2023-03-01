@@ -32,4 +32,9 @@ public class LocationController {
     public void updateOneLocation(@PathVariable int locationId, @RequestBody Location location) {
         locationService.updateOneLocation(locationId, location);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteOneLocationByLocationId(@PathVariable int id) {
+        locationService.deleteOneLocationByLocationId(id);
+    }
 }

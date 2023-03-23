@@ -17,8 +17,8 @@ public class BadgeController {
     public BadgeTransactionService badgeTransactionService;
 
     @PutMapping("/{id}")
-    public void deactivateOneBadgeByBadgeId(@PathVariable int id) {
-        badgeService.deactivateOneBadgeByBadgeId(id);
+    public void deactivateOneBadgeByMemberId(@PathVariable int id) {
+        badgeService.deactivateOneBadgeByMemberId(id);
     }
 
     @PostMapping
