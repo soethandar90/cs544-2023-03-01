@@ -8,7 +8,7 @@ public interface BadgeService {
 
     Badge addOneBadge(Badge badge);
 
-    Badge deactivateOneBadgeByMemberId(int id);
+    void deactivateOneBadgeByMemberId(int id);
 
     List<Badge> findAllBadgesOfOneMemberByMemberId(int id);
 }
