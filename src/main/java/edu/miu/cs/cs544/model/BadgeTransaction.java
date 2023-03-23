@@ -26,7 +26,7 @@ public class BadgeTransaction {
     @NotNull
     private LocalDateTime transactionTime;
 
-    @Column(name="transactionType")
+    @Column(name="transactionType",columnDefinition = "varchar(20)")
     @NotNull
     @Enumerated(EnumType.STRING)
     private BadgeTransactionType transactionType;
