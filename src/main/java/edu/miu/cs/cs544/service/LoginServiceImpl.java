@@ -1,4 +1,4 @@
-package edu.miu.cs.cs544.service.impl;
+package edu.miu.cs.cs544.service;
 
 import edu.miu.cs.cs544.model.*;
 import edu.miu.cs.cs544.repository.MemberRepository;

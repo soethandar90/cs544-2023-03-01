@@ -1,7 +1,7 @@
-package edu.miu.cs.cs544.service.impl;
+package edu.miu.cs.cs544.service;
 
-import edu.miu.cs.cs544.common.BadgeStatusType;
-import edu.miu.cs.cs544.common.BadgeTransactionType;
+import edu.miu.cs.cs544.util.BadgeStatusType;
+import edu.miu.cs.cs544.util.BadgeTransactionType;
 import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
 import edu.miu.cs.cs544.exception.InvalidTransactionException;
 import edu.miu.cs.cs544.model.*;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,5 +1,6 @@
-package edu.miu.cs.cs544.security;
+package edu.miu.cs.cs544.config;
 
+import edu.miu.cs.cs544.security.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

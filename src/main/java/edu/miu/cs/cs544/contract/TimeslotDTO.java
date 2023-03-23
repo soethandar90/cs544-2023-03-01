@@ -1,6 +1,6 @@
 package edu.miu.cs.cs544.contract;
 
-import edu.miu.cs.cs544.common.Day;
+import edu.miu.cs.cs544.util.Day;
 import lombok.Data;
 import java.sql.Time;
 

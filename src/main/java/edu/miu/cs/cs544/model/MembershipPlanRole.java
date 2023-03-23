@@ -1,6 +1,6 @@
 package edu.miu.cs.cs544.model;
 
-import edu.miu.cs.cs544.common.UsageFrequencyType;
+import edu.miu.cs.cs544.util.UsageFrequencyType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
