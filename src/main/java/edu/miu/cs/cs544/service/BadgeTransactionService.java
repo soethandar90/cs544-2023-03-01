@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BadgeTransactionService {
-    boolean generateBadgeTransaction(BadgeTransaction badgeTransaction);
 
     Optional<List<BadgeTransaction>> findAllBadgeTransactionByMemberId(int memberId);
 
-    Badge filterActiveBadgeByMemberId(int memberId);
 
     boolean generateBadgeTransaction(BadgeTransactionDTO badgeTransaction);
 

@@ -28,6 +28,7 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
     @Override
     public MembershipPlan updateOnePlanByPlanId(MembershipPlan membershipPlan) {
         return membershipPlanRepository.save(membershipPlan);
+        
     }
 
     @Override

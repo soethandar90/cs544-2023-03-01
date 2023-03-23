@@ -21,8 +21,8 @@ public class MembershipController {
     }
 
     @PutMapping("/{membershipId}")
-    public Membership updateOneMembershipByMembershipId(@RequestBody Membership membership) {
-        return membershipService.updateOneMembershipByMembershipId(membership);
+    public Membership updateOneMembershipByMembershipId(@PathVariable int membershipId, @RequestBody Membership membership) {
+        return membershipService.updateOneMembershipByMembershipId(membershipId,membership);
     }
 
     @DeleteMapping("/{membershipId}")
