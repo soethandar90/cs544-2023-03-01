@@ -2,7 +2,6 @@ package edu.miu.cs.cs544.service;
 
 import edu.miu.cs.cs544.model.Timeslot;
 import edu.miu.cs.cs544.repository.TimeslotRepository;
-import edu.miu.cs.cs544.service.TimeslotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

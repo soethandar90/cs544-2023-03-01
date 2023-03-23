@@ -1,6 +1,5 @@
 package edu.miu.cs.cs544.controller;
 
-import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.model.Timeslot;
 import edu.miu.cs.cs544.service.TimeslotService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +15,11 @@ public class TimeslotController {
 
     @PostMapping("")
     public Timeslot addOneTimeslot(@RequestBody Timeslot timeslot) {
-       Timeslot timeslot1= timeslotService.addOneTimeslot(timeslot);
-
-        return timeslot1;
+       return timeslotService.addOneTimeslot(timeslot);
     }
     @PutMapping("/{id}")
     public Timeslot updateOneTimeslotByTimeslotId(@PathVariable Integer id,@RequestBody Timeslot timeslot) {
-        Timeslot timeslot1 = timeslotService.updateOneTimeslotByTimeslotId(timeslot);
-
-        return timeslot1;
+        return timeslotService.updateOneTimeslotByTimeslotId(timeslot);
     }
     @DeleteMapping("/{id}")
     public String deleteOneTimeslotBYTimeslotId(@PathVariable Integer id){

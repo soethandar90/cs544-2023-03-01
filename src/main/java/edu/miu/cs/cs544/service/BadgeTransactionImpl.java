@@ -6,7 +6,6 @@ import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
 import edu.miu.cs.cs544.exception.InvalidTransactionException;
 import edu.miu.cs.cs544.model.*;
 import edu.miu.cs.cs544.repository.*;
-import edu.miu.cs.cs544.service.BadgeTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +61,6 @@ public class BadgeTransactionImpl implements BadgeTransactionService {
         badgeTransaction.setPlan(membershipPlan);
         badgeTransaction.setLocation(location);
         badgeTransaction.setTransactionTime(LocalDateTime.now());
-        ///badgeTransactionRepository.save(badgeTransaction);
 
         if (!isBadgeActive(badge)) {
             declineTransaction(badgeTransaction, "Badge Inactive");

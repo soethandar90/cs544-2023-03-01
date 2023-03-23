@@ -22,7 +22,6 @@ public class AwesomeUserDetails implements UserDetails {
 
     private List<Role> roles;
 
-
     public AwesomeUserDetails(Member user) {
 
         this.email = user.getEmail();

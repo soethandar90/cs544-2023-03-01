@@ -3,7 +3,6 @@ package edu.miu.cs.cs544.service;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.util.BadgeStatusType;
 import edu.miu.cs.cs544.repository.BadgeRepository;
-import edu.miu.cs.cs544.service.BadgeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

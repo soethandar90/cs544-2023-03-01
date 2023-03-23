@@ -1,6 +1,5 @@
 package edu.miu.cs.cs544.security;
 
-import edu.miu.cs.cs544.model.Member;
 import edu.miu.cs.cs544.repository.MemberRepository;
 import lombok.var;
 import org.springframework.security.core.userdetails.UserDetails;

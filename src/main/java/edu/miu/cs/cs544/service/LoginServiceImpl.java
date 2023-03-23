@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public LoginResponseMember login(LoginRequest loginRequest) {
         try {
-            var result = authenticationManager.authenticate(
+            authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
                             loginRequest.getPassword())
             );
@@ -39,8 +39,7 @@ public class LoginServiceImpl implements LoginService {
         final String accessToken = jwtHelper.generateToken(loginRequest.getEmail());
         final String refreshToken = jwtHelper.generateRefreshToken(loginRequest.getEmail());
         Member member = memberRepository.findByEmail(loginRequest.getEmail());
-        var loginResponse = new LoginResponseMember(accessToken, refreshToken,member.getMemberId());
-        return loginResponse;
+        return new LoginResponseMember(accessToken, refreshToken,member.getMemberId());
     }
 
     @Override
@@ -48,8 +47,7 @@ public class LoginServiceImpl implements LoginService {
         boolean isRefreshTokenValid = jwtHelper.validateToken(refreshTokenRequest.getRefreshToken());
         if (isRefreshTokenValid) {
             final String accessToken = jwtHelper.generateToken(jwtHelper.getSubject(refreshTokenRequest.getRefreshToken()));
-            var loginResponse = new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken());
-            return loginResponse;
+            return new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken());
         }
         return new LoginResponse();
     }

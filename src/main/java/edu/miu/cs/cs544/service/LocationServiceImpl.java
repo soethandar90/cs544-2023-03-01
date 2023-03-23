@@ -35,7 +35,7 @@ public class LocationServiceImpl implements LocationService {
     public void updateOneLocation(int locationId, Location location) {
             Optional<Location> optionalLocation = locationRepository.findById(locationId);
             if (!optionalLocation.isPresent()) {
-                System.out.println("Location not found with id " + locationId);
+                System.err.println("Location not found with id " + locationId);
             }
             Location existingLocation = optionalLocation.get();
 
@@ -44,12 +44,7 @@ public class LocationServiceImpl implements LocationService {
             existingLocation.setDescription(location.getDescription());
             existingLocation.setLocationType(location.getLocationType());
             existingLocation.setCapacity(location.getCapacity());
-            //existingLocation.setTimeSlots(location.getTimeSlots());
-            //existingLocation.setPlan(location.getPlan());
-
-            // Save the updated location to the database
              locationRepository.save(existingLocation);
-        System.out.println("Location updated");
     }
 
     @Override

@@ -1,9 +1,6 @@
 package edu.miu.cs.cs544.repository;
 
-import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.model.BadgeTransaction;
-import edu.miu.cs.cs544.model.Location;
-import edu.miu.cs.cs544.model.Timeslot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
