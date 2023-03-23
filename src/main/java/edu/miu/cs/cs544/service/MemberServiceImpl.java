@@ -2,7 +2,6 @@ package edu.miu.cs.cs544.service;
 
 import edu.miu.cs.cs544.model.Member;
 import edu.miu.cs.cs544.repository.MemberRepository;
-import edu.miu.cs.cs544.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +18,7 @@ public class MemberServiceImpl implements MemberService {
     private MemberRepository memberRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public void addOneNewMember(Member member) {
 

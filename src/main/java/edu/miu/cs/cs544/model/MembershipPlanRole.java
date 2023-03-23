@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="MembershipPlanRole")
+@Table(name = "MembershipPlanRole")
 @NoArgsConstructor
 @AllArgsConstructor
 public class MembershipPlanRole {
@@ -24,10 +24,10 @@ public class MembershipPlanRole {
     @MapsId("roleId")
     private Role role;
 
-    @Column(name="usageLimit")
+    @Column(name = "usageLimit")
     private int usageLimit;
 
-    @Column(name="usageFrequency",columnDefinition = "varchar(20)")
+    @Column(name = "usageFrequency", columnDefinition = "varchar(20)")
     @Enumerated(EnumType.STRING)
     private UsageFrequencyType usageFrequency;
 

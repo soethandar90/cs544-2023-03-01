@@ -2,14 +2,10 @@ package edu.miu.cs.cs544.contract;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
 public class BadgeTransactionDTO {
-    private LocalDate transactionTime;
-    private String transactionType;
-    private LocationDTO location;
-    private MembershipPlanDTO plan;
-    private BadgeDTO badgeDTO;
-
+    private int location;
+    private String badge;
+    private int plan;
+    private int checker;
 }

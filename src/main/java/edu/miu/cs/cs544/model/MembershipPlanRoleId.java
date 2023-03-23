@@ -22,12 +22,10 @@ public class MembershipPlanRoleId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
 
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         MembershipPlanRoleId that = (MembershipPlanRoleId) o;
-        return Objects.equals(planId, that.planId) &&
-                Objects.equals(roleId, that.roleId);
+        return Objects.equals(planId, that.planId) && Objects.equals(roleId, that.roleId);
     }
 
     @Override

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.OK)
 @Getter
 @NoArgsConstructor
-public class InvalidTransactionException extends RuntimeException{
+public class InvalidTransactionException extends RuntimeException {
     private String transactionId;
     private String transactionTime;
     private String status;

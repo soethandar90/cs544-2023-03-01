@@ -4,12 +4,10 @@ import edu.miu.cs.cs544.model.Location;
 import edu.miu.cs.cs544.model.MembershipPlan;
 import edu.miu.cs.cs544.repository.LocationRepository;
 import edu.miu.cs.cs544.repository.MembershipPlanRepository;
-import edu.miu.cs.cs544.service.MembershipPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,14 +15,14 @@ import java.util.Optional;
 @Transactional
 public class MembershipPlanServiceImpl implements MembershipPlanService {
     @Autowired
-   private MembershipPlanRepository membershipPlanRepository;
+    private MembershipPlanRepository membershipPlanRepository;
 
     @Autowired
     private LocationRepository locationRepository;
 
     @Override
     public void addOnePlan(MembershipPlan membershipPlan) {
-         membershipPlanRepository.save(membershipPlan);
+        membershipPlanRepository.save(membershipPlan);
     }
 
     @Override
@@ -39,17 +37,12 @@ public class MembershipPlanServiceImpl implements MembershipPlanService {
 
     @Override
     public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id) {
-        return membershipPlanRepository.findAllMembershipPlanOfmemberByMemberId( id);
+        return membershipPlanRepository.findAllMembershipPlanOfmemberByMemberId(id);
     }
-
-    //@Override
-   // public List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId() {
-      //  return membershipPlanRepository.findAll();
-   // }
 
     @Override
     public Optional<MembershipPlan> getMembershipPlanById(int id) {
-      return  membershipPlanRepository.findById(id);
+        return membershipPlanRepository.findById(id);
     }
 
     @Override

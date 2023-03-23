@@ -7,5 +7,6 @@ import edu.miu.cs.cs544.model.RefreshTokenRequest;
 
 public interface LoginService {
     LoginResponseMember login(LoginRequest loginRequest);
+
     LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
 }

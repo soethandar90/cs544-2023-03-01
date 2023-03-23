@@ -21,23 +21,23 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="locationId")
+    @Column(name = "locationId")
     private int locationId;
 
-    @Column(name="locationName")
+    @Column(name = "locationName")
     @NotNull
     private String locationName;
 
-    @Column(name="description")
+    @Column(name = "description")
     @NotNull
     private String description;
 
-    @Column(name="locationType",columnDefinition = "varchar(20)")
+    @Column(name = "locationType", columnDefinition = "varchar(20)")
     @NotNull
     @Enumerated(EnumType.STRING)
     private LocationType locationType;
 
-    @Column(name="capacity")
+    @Column(name = "capacity")
     @NotNull
     @Min(20)
     @Max(101)

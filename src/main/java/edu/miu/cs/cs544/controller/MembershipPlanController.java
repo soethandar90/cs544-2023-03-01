@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/plans")
@@ -32,9 +31,7 @@ public class MembershipPlanController {
 
     @PutMapping("/{id}")
     public void updateOnePlan(@PathVariable Integer id, @RequestBody MembershipPlan membershipPlan) {
-        //membershipPlanService.updateOnePlanByPlanId(membershipPlan);
         membershipPlanService.updateOnePlanByPlanId(membershipPlan);
-
     }
 
     @DeleteMapping("/{id}")

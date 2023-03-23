@@ -1,16 +1,13 @@
 package edu.miu.cs.cs544.service;
 
-import edu.miu.cs.cs544.contract.RoleDTO;
-import edu.miu.cs.cs544.exception.ResourceNotFoundException;
 import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.repository.RoleRepository;
-import edu.miu.cs.cs544.service.RoleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RoleServiceImp implements RoleService {
+public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
@@ -19,9 +16,6 @@ public class RoleServiceImp implements RoleService {
 
     @Override
     public Role addOneRole(Role role) {
-        //check role exist or not
-//        Role role = new Role();
-//        role.setRoleName(name);
         roleRepository.save(role);
         return role;
     }
@@ -40,10 +34,7 @@ public class RoleServiceImp implements RoleService {
         return "200";
     }
 
-    public Role getOneRoleByRoleId(Integer roleId){
-        Role role = roleRepository.findById(roleId).get();
-        //Role role = roleRepository.findById(roleId).orElseThrow(() -> new ResourceNotFoundException("Role", "roleId", roleId));
-     //   RoleDTO roleDto = this.modelMapper.map(role, Role.class);
-        return role;
+    public Role getOneRoleByRoleId(Integer roleId) {
+        return roleRepository.findById(roleId).get();
     }
 }

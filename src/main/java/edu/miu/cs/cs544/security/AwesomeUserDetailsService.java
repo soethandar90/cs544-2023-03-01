@@ -1,8 +1,6 @@
 package edu.miu.cs.cs544.security;
 
-import edu.miu.cs.cs544.model.Member;
 import edu.miu.cs.cs544.repository.MemberRepository;
-import lombok.var;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +19,7 @@ public class AwesomeUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       return new AwesomeUserDetails(userRepo.findByEmail(username));
+        return new AwesomeUserDetails(userRepo.findByEmail(username));
     }
 
 }

@@ -9,11 +9,15 @@ import java.util.Optional;
 public interface MembershipPlanService {
 
 
-    public void addOnePlan(MembershipPlan membershipPlan);
-    public void updateOnePlanByPlanId(MembershipPlan membershipPlan);
-    public void deleteOnePlan(int planId);
-    public List <MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id);
-  public Optional<MembershipPlan> getMembershipPlanById(int id);
+    void addOnePlan(MembershipPlan membershipPlan);
+
+    void updateOnePlanByPlanId(MembershipPlan membershipPlan);
+
+    void deleteOnePlan(int planId);
+
+    List<MembershipPlan> findAllMembershipPlanOfmemberByMemberId(int id);
+
+    Optional<MembershipPlan> getMembershipPlanById(int id);
 
     List<Location> findLocationByPlan(Integer planid);
 }

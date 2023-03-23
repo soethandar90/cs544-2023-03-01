@@ -1,12 +1,14 @@
 package edu.miu.cs.cs544.service;
 
-import edu.miu.cs.cs544.model.*;
+import edu.miu.cs.cs544.model.Member;
 import edu.miu.cs.cs544.repository.MemberRepository;
 import edu.miu.cs.cs544.security.JwtHelper;
-import edu.miu.cs.cs544.service.LoginService;
+import edu.miu.cs.cs544.model.LoginRequest;
+import edu.miu.cs.cs544.model.LoginResponse;
+import edu.miu.cs.cs544.model.LoginResponseMember;
+import edu.miu.cs.cs544.model.RefreshTokenRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -18,7 +20,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class LoginServiceImpl implements LoginService {
-
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtHelper jwtHelper;
@@ -28,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public LoginResponseMember login(LoginRequest loginRequest) {
         try {
-            var result = authenticationManager.authenticate(
+            authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
                             loginRequest.getPassword())
             );
@@ -39,8 +40,7 @@ public class LoginServiceImpl implements LoginService {
         final String accessToken = jwtHelper.generateToken(loginRequest.getEmail());
         final String refreshToken = jwtHelper.generateRefreshToken(loginRequest.getEmail());
         Member member = memberRepository.findByEmail(loginRequest.getEmail());
-        var loginResponse = new LoginResponseMember(accessToken, refreshToken,member.getMemberId());
-        return loginResponse;
+        return new LoginResponseMember(accessToken, refreshToken, member.getMemberId());
     }
 
     @Override
@@ -48,8 +48,7 @@ public class LoginServiceImpl implements LoginService {
         boolean isRefreshTokenValid = jwtHelper.validateToken(refreshTokenRequest.getRefreshToken());
         if (isRefreshTokenValid) {
             final String accessToken = jwtHelper.generateToken(jwtHelper.getSubject(refreshTokenRequest.getRefreshToken()));
-            var loginResponse = new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken());
-            return loginResponse;
+            return new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken());
         }
         return new LoginResponse();
     }

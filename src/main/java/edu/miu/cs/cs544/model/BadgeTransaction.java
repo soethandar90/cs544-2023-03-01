@@ -19,19 +19,19 @@ import java.time.LocalDateTime;
 public class BadgeTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="transactionId")
+    @Column(name = "transactionId")
     private int transactionId;
 
-    @Column(name="transactionTime")
+    @Column(name = "transactionTime")
     @NotNull
     private LocalDateTime transactionTime;
 
-    @Column(name="transactionType",columnDefinition = "varchar(20)")
+    @Column(name = "transactionType", columnDefinition = "varchar(20)")
     @NotNull
     @Enumerated(EnumType.STRING)
     private BadgeTransactionType transactionType;
 
-    @Column(name="reason")
+    @Column(name = "reason")
     private String reason;
 
     @ManyToOne

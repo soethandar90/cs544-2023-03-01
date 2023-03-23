@@ -1,13 +1,10 @@
 package edu.miu.cs.cs544.controller;
 
-import edu.miu.cs.cs544.contract.BadgeTransactionRequestDTO;
-import edu.miu.cs.cs544.exception.ResourceNotFoundException;
+import edu.miu.cs.cs544.contract.BadgeTransactionDTO;
 import edu.miu.cs.cs544.model.Badge;
 import edu.miu.cs.cs544.model.BadgeTransaction;
-import edu.miu.cs.cs544.model.Role;
 import edu.miu.cs.cs544.service.BadgeTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +28,7 @@ public class BadgeTransactionController {
     }
 
     @PostMapping
-    public void addOneTransaction(@RequestBody BadgeTransactionRequestDTO badgeTransaction) {
+    public void addOneTransaction(@RequestBody BadgeTransactionDTO badgeTransaction) {
         badgeTransactionService.generateBadgeTransaction(badgeTransaction);
     }
 
